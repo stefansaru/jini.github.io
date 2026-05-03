@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amethyst — 4 Pics 1 Word — how many can you solve?</title>
+  <meta name="description"
+        content="Play Amethyst: a free 4-pics-1-word game with 206 puzzles across 5 themes in 7 languages.">
+  <style>
+/* Palette — derived from the Jini logo:
+   dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
+:root {
+  --dark:   #1F2937;
+  --green:  #00D95F;
+  --green2: #00B84E;   /* hover / pressed */
+  --bg:     #F8FAFC;
+  --white:  #FFFFFF;
+  --border: #E5E7EB;
+  --muted:  #6B7280;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+}
+a { color: var(--dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ────────────────────────────────────────────── */
+header {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 72px 24px 56px;
+}
+header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+/* Green dot accent — mirrors the logo dots */
+header h1 span.dot { color: var(--green); }
+header p {
+  font-size: 20px;
+  margin-top: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.cta-row { margin-top: 28px; }
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--green2); text-decoration: none; }
+.cta-soon {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  padding: 11px 24px;
+  border-radius: 6px;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 14px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+nav a:hover { color: var(--green2); border-bottom-color: var(--green); text-decoration: none; }
+
+/* ── Main / Sections ────────────────────────────────────── */
+main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+}
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+/* Green left rule on h2 */
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Stats grid ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-card .number {
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--green2);
+  letter-spacing: -1px;
+}
+.stat-card .label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ── Theme list ─────────────────────────────────────────── */
+.theme-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.theme-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.theme-list li .theme-name { font-weight: 600; }
+.theme-list li .puzzle-count {
+  background: #E6F9EE;
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ── Language badges ────────────────────────────────────── */
+.lang-label { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.lang-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.lang-badge {
+  background: var(--dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* ── Features list ──────────────────────────────────────── */
+.features { list-style: none; }
+.features li {
+  padding: 6px 0 6px 24px;
+  position: relative;
+  font-size: 15px;
+  color: #374151;
+  border-bottom: 1px solid var(--border);
+}
+.features li:last-child { border-bottom: none; }
+.features li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--dark); }
+footer .sep { margin: 0 10px; opacity: 0.4; }
+
+/* ── Privacy prose ──────────────────────────────────────── */
+.prose { font-size: 15px; color: #374151; }
+.prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.prose h2 {
+  font-size: 16px; font-weight: 700; color: var(--dark);
+  margin: 24px 0 8px;
+}
+.prose h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative; top: -1px;
+}
+.prose p  { margin-bottom: 10px; }
+.prose ul { margin: 6px 0 12px 20px; }
+.prose ul li { margin-bottom: 4px; }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Amethyst<span class="dot">.</span></h1>
+  <p>4 Pics 1 Word — how many can you solve?</p>
+  <div class="cta-row">
+    <span class="cta-soon">Coming soon to Google Play</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#app">The App</a>
+  <a href="#features">Features</a>
+  <a href="#contact">Contact</a>
+  <a href="privacy_policy.html">Privacy</a>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Amethyst is a free mobile word-puzzle game in the
+      <em>4 Pics 1 Word</em> genre. Look at four images, figure out the
+      single word they all share, and tap the letters from the bank to
+      spell it out.
+    </p>
+    <p>
+      With 206 puzzles across 5 themed
+      categories — and full support for 7 languages —
+      there is always something new to solve.
+    </p>
+  </section>
+
+  <section id="app">
+    <h2>The App</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="number">5</span>
+        <div class="label">Themes</div>
+      </div>
+      <div class="stat-card">
+        <span class="number">206</span>
+        <div class="label">Puzzles</div>
+      </div>
+      <div class="stat-card">
+        <span class="number">5203</span>
+        <div class="label">Images</div>
+      </div>
+      <div class="stat-card">
+        <span class="number">7</span>
+        <div class="label">Languages</div>
+      </div>
+    </div>
+
+    <h2>Themes</h2>
+    <ul class="theme-list">
+          <li><span class="theme-name">Animals</span><span class="puzzle-count">56 puzzles</span></li>
+          <li><span class="theme-name">Creatures</span><span class="puzzle-count">19 puzzles</span></li>
+          <li><span class="theme-name">Occupations</span><span class="puzzle-count">45 puzzles</span></li>
+          <li><span class="theme-name">Places</span><span class="puzzle-count">45 puzzles</span></li>
+          <li><span class="theme-name">Sports</span><span class="puzzle-count">41 puzzles</span></li>
+    </ul>
+
+    <p class="lang-label">Available in 7 languages:</p>
+    <div class="lang-badges">
+          <span class="lang-badge">English</span>
+          <span class="lang-badge">German</span>
+          <span class="lang-badge">Spanish</span>
+          <span class="lang-badge">French</span>
+          <span class="lang-badge">Italian</span>
+          <span class="lang-badge">Portuguese</span>
+          <span class="lang-badge">Romanian</span>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <ul class="features">
+      <li>Free to play — no purchase required</li>
+      <li>Works offline — no internet connection needed</li>
+      <li>206 puzzles across 5 themed categories</li>
+      <li>Fully localised in 7 languages</li>
+      <li>Hint power-ups: reveal a letter, remove wrong letters, or show the answer</li>
+      <li>Dark, light, and high-contrast colour themes</li>
+      <li>Automatic progress tracking — pick up where you left off</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Questions, feedback, or support requests:</p>
+    <p><a href="mailto:hello@jini.solutions">hello@jini.solutions</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <span class="sep">|</span>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    <span class="sep">|</span>
+    &copy; 2026 Amethyst
+  </p>
+  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-05-03 09:25 UTC</p>
+</footer>
+
+</body>
+</html>
