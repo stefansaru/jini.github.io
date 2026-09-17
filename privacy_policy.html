@@ -244,6 +244,69 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .prose p  { margin-bottom: 10px; }
 .prose ul { margin: 6px 0 12px 20px; }
 .prose ul li { margin-bottom: 4px; }
+/* ── Store badges / platforms line (2026-09-17) ─────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+
+/* ── Hero: the Play feature graphic under the header ────── */
+.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero img {
+  max-width: 900px; width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Screenshot gallery: six phone captures, scroll-snap ─── */
+.shots {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  flex: 0 0 auto; scroll-snap-align: start;
+  width: 180px; margin: 0; text-align: center;
+}
+.shot img {
+  width: 100%; height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.10);
+  background: #000;
+}
+.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+@media (min-width: 900px) {
+  .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
+  .shot { width: calc((100% - 5 * 14px) / 6); }
+}
+
+/* ── Rights table on the privacy page ───────────────────── */
+.prose table.rights {
+  width: 100%; border-collapse: collapse;
+  margin: 12px 0 16px; font-size: 14px;
+}
+.prose table.rights th, .prose table.rights td {
+  border: 1px solid var(--border); padding: 8px 10px;
+  vertical-align: top; text-align: left;
+}
+.prose table.rights th {
+  background: var(--bg); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.prose table.rights td:first-child { white-space: nowrap; }
+.prose table.rights .art { font-size: 12px; color: var(--muted); }
+.prose table.rights .art a { color: var(--green2); }
+@media (max-width: 640px) {
+  .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
+  .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
+  .prose table.rights thead { display: none; }
+  .prose table.rights tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    margin-bottom: 10px; padding: 6px 0;
+  }
+  .prose table.rights td { border: none; padding: 4px 12px; white-space: normal; }
+  .prose table.rights td:first-child { white-space: normal; }
+}
 
   </style>
 </head>
@@ -257,6 +320,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 
 <nav>
   <a href="index.html#about">About</a>
+  <a href="index.html#screenshots">Screenshots</a>
   <a href="index.html#app">The App</a>
   <a href="index.html#features">Features</a>
   <a href="index.html#contact">Contact</a>
@@ -267,11 +331,15 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 <section class="prose">
 
   <h1>Privacy Policy</h1>
-  <p class="subtitle">Last updated: 2026-09-17</p>
+  <p class="subtitle">Last updated: 2026-09-17 &middot; applies to the
+    Android app (Google Play) and the iOS app (App Store)</p>
 
   <p>
     Amethyst ("we", "our", "the app") is a free word-puzzle game.
     This page explains what data is collected when you use the app and how it is used.
+    The same app, with the same privacy behaviour, is published for Android on
+    Google Play and for iPhone and iPad on the App Store; where the two
+    platforms differ, this page says so.
   </p>
 
   <h2>Data controller</h2>
@@ -291,22 +359,23 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
     gameplay data to our servers.
   </p>
   <p>
-    All progress (completed puzzles, settings, hint counts) is stored
-    exclusively on your device using Android's local storage and is never
-    sent anywhere.
+    All progress (completed puzzles, settings, hint counts, your declared age
+    band) is stored exclusively on your device — in the app's private local
+    storage on Android, in the app's sandbox on iOS — and is never sent
+    anywhere. Uninstalling the app removes it; so does
+    <em>Settings &rarr; Delete all local data</em> inside the app.
   </p>
 
   <p>
     <strong>Voluntary defect reporting.</strong> If you choose to report a
-    technical issue, you may send an email to
-    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    technical issue, you may send an email to <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
     To help us investigate and resolve the issue, we recommend including
     some or all of the following — the choice of what to share is entirely
     yours:
   </p>
   <ul>
     <li>Phone model</li>
-    <li>Phone operating system version</li>
+    <li>Phone operating system version (Android or iOS)</li>
     <li>Your Amethyst version and in-app settings</li>
     <li>Error logs captured by the app</li>
     <li>Screenshots or screen recordings showing the malfunction</li>
@@ -316,8 +385,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
     defect. It reaches us through the jini.solutions mail forwarding
     service and is kept in the controller's own mailbox; it is not
     shared with any third party. You may request deletion of the email
-    thread at any time by contacting us at
-    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>;
+    thread at any time by replying to it;
     please be aware that deletion is carried out immediately upon request
     but will permanently remove the correspondence and may prevent us from
     completing the investigation.
@@ -326,12 +394,15 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   <h2>Advertising (Google AdMob)</h2>
   <p>
     The app displays advertisements served by <strong>Google AdMob</strong>,
-    a third-party advertising network operated by Google LLC.  AdMob may
-    collect and use data to serve personalised or non-personalised ads,
-    including:
+    a third-party advertising network operated by Google LLC, on both
+    platforms: one small banner, and a rewarded video you choose to watch.
+    AdMob may collect and use data to serve personalised or non-personalised
+    ads, including:
   </p>
   <ul>
-    <li>Device identifiers (e.g. Advertising ID / GAID)</li>
+    <li>Device identifiers — the Advertising ID (GAID) on Android; on iOS the
+        Identifier for Advertisers (IDFA), which AdMob can read only if you
+        have allowed tracking (see <em>Apple platform services</em> below)</li>
     <li>IP address and approximate location</li>
     <li>App usage and interaction data</li>
     <li>Device model, OS version, language, and time zone</li>
@@ -344,9 +415,10 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   </p>
   <p>
     <strong>Legal basis (EU/EEA/UK users):</strong> processing by AdMob is
-    based on your explicit consent (GDPR Article 6(1)(a)).  On first launch
-    you will be shown a consent dialogue powered by Google's User Messaging
-    Platform.  You can change or withdraw your consent at any time from
+    based on your explicit consent (<a href="https://gdpr-info.eu/art-6-gdpr/" rel="noopener" target="_blank">GDPR Art. 6(1)(a)</a>).  On first
+    launch you will be shown a consent dialogue powered by Google's User
+    Messaging Platform, on Android and on iOS alike.  You can change or
+    withdraw your consent at any time from
     <em>Top right corner &rarr; Manage ad consent</em>.
   </p>
   <p>
@@ -354,22 +426,40 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
     non-personalised ads instead and all features remain fully available.
   </p>
 
-  <h2>Google Play Services</h2>
+  <h2>Google platform services (Android)</h2>
   <p>
-    The app uses Google Play Services for standard Android functionality.
+    On Android the app uses Google Play Services for standard functionality.
     Google Play Services may collect certain device and usage information as
     described in
     <a href="https://policies.google.com/privacy" rel="noopener"
        target="_blank">Google's Privacy Policy</a>.
   </p>
 
+  <h2>Apple platform services (iOS)</h2>
+  <p>
+    On iPhone and iPad the app runs on Apple's platform services. Apple may
+    collect device and usage information as described in
+    <a href="https://www.apple.com/legal/privacy/" rel="noopener"
+       target="_blank">Apple's Privacy Policy</a>.
+    The app does <strong>not</strong> ask for permission to track you across
+    other companies' apps and websites (Apple's App Tracking Transparency
+    prompt is never shown), so the Identifier for Advertisers is not available
+    to AdMob unless you have allowed tracking for all apps in
+    <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>. You can also
+    turn off personalised ads from Apple in
+    <em>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising</em>.
+    The App Store listing carries the app's privacy "nutrition label", which
+    summarises this page.
+  </p>
+
   <h2>Children's privacy</h2>
   <p>
     The app is not directed at children under the age of 13.  We do not
-    knowingly collect personal information from children.  If you believe
-    your child has provided personal information through the app, please
-    contact us at
-    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    knowingly collect personal information from children. On first launch the
+    app asks which age band you are in; a player who declares 17 or younger is
+    never shown the personalisation dialogue and receives non-personalised
+    ads only. If you believe your child has provided personal information
+    through the app, please contact us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
     and we will take prompt action to remove it.
   </p>
 
@@ -377,49 +467,101 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   <p>
     Because we do not collect personal data ourselves, there is no data
     held by us to retain or delete.  Game progress stored on your device
-    is deleted when you uninstall the app.  For data held by Google (AdMob /
-    Play Services), refer to
+    is deleted when you uninstall the app or choose
+    <em>Settings &rarr; Delete all local data</em>.  For data held by Google
+    (AdMob / Play Services), refer to
     <a href="https://policies.google.com/privacy" rel="noopener"
-       target="_blank">Google's data retention policies</a>.
+       target="_blank">Google's data retention policies</a>; for data held by
+    Apple, to Apple's.
   </p>
 
   <h2>Your rights (EU / EEA / UK — GDPR)</h2>
   <p>
-    If you are located in the EU, EEA, or UK, you have the following rights
-    regarding any personal data processed in connection with your use of
-    this app:
+    Because the app keeps everything on your device and we hold no copy, you
+    can exercise most rights yourself, at once, without asking us:
   </p>
   <ul>
-    <li><strong>Right of access (Art. 15)</strong> — request confirmation of
-        whether your data is being processed and obtain a copy.</li>
-    <li><strong>Right to rectification (Art. 16)</strong> — request correction
-        of inaccurate data.</li>
-    <li><strong>Right to erasure (Art. 17)</strong> — request deletion of your
-        data ("right to be forgotten").</li>
-    <li><strong>Right to data portability (Art. 20)</strong> — receive your
-        data in a structured, machine-readable format.</li>
-    <li><strong>Right to withdraw consent (Art. 7(3))</strong> — withdraw
-        advertising consent at any time via
-        <em>Top right corner &rarr; Manage ad consent</em>.
-        Withdrawal does not affect the lawfulness of prior processing.</li>
-    <li><strong>Right to lodge a complaint</strong> — you may lodge a complaint
-        with the supervisory authority in your country of residence.  For
-        Romania: <a href="https://www.dataprotection.ro" rel="noopener"
-        target="_blank">Autoritatea Națională de Supraveghere a Prelucrării
-        Datelor cu Caracter Personal (ANSPDCP)</a>.</li>
+    <li><strong>Delete everything the app knows:</strong> uninstall the app, or
+        open <em>Settings &rarr; Delete all local data</em>. Both remove your
+        progress, settings, history and age band completely; nothing survives
+        on our side, because nothing ever left the device.</li>
+    <li><strong>If you have emailed us:</strong> your message and anything you
+        attached is the only data we hold. Reply to that email and ask us to
+        delete the conversation. We delete it and stop working on it; that
+        ends the exchange.</li>
+    <li><strong>Advertising data</strong> (the advertising identifier, ad
+        interactions) is held by Google, not by us. Withdraw or limit consent
+        in the app at <em>Top right corner &rarr; Manage ad consent</em>; for
+        Google's own records use the request tool linked below.</li>
   </ul>
+  <table class="rights">
+    <thead>
+      <tr><th>Right</th><th>What it means</th><th>What to do</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Access</strong><br><span class="art"><a href="https://gdpr-info.eu/art-15-gdpr/" rel="noopener" target="_blank">Art. 15</a></span></td>
+        <td>Know whether we hold data about you, and get a copy.</td>
+        <td>For app data: it is all on your device; the Settings page shows it. For an email you sent: you can keep a record of the thread.</td>
+      </tr>
+      <tr>
+        <td><strong>Rectification</strong><br><span class="art"><a href="https://gdpr-info.eu/art-16-gdpr/" rel="noopener" target="_blank">Art. 16</a></span></td>
+        <td>Have inaccurate data corrected.</td>
+        <td>App data: change it in the app. Email data: reply with the correction.</td>
+      </tr>
+      <tr>
+        <td><strong>Erasure</strong><br><span class="art"><a href="https://gdpr-info.eu/art-17-gdpr/" rel="noopener" target="_blank">Art. 17</a></span></td>
+        <td>Have your data deleted.</td>
+        <td>App data: uninstall, or <em>Settings &rarr; Delete all local data</em>. Email data: reply and ask us to delete the conversation. Google's ad data: withdraw consent in the app, and use Google's data-deletion tool.</td>
+      </tr>
+      <tr>
+        <td><strong>Restriction</strong><br><span class="art"><a href="https://gdpr-info.eu/art-18-gdpr/" rel="noopener" target="_blank">Art. 18</a></span></td>
+        <td>Pause the use of your data while a dispute is settled.</td>
+        <td>Reply to your email and ask; we stop using the thread until it is resolved.</td>
+      </tr>
+      <tr>
+        <td><strong>Portability</strong><br><span class="art"><a href="https://gdpr-info.eu/art-20-gdpr/" rel="noopener" target="_blank">Art. 20</a></span></td>
+        <td>Receive your data in a machine-readable form.</td>
+        <td>App data never leaves the device, so there is nothing to export from us. Email data is already in the email conversation thread.</td>
+      </tr>
+      <tr>
+        <td><strong>Objection</strong><br><span class="art"><a href="https://gdpr-info.eu/art-21-gdpr/" rel="noopener" target="_blank">Art. 21</a></span></td>
+        <td>Object to processing based on legitimate interest, including profiling for ads.</td>
+        <td>Select non-personalised ads at <em>Top right corner &rarr; Manage ad consent</em>, or turn off ad personalisation in your device's settings.</td>
+      </tr>
+      <tr>
+        <td><strong>Withdraw consent</strong><br><span class="art"><a href="https://gdpr-info.eu/art-7-gdpr/" rel="noopener" target="_blank">Art. 7(3)</a></span></td>
+        <td>Take back the consent you gave for personalised ads, at any time.</td>
+        <td><em>Top right corner &rarr; Manage ad consent</em>. Withdrawal does not affect processing that happened before it.</td>
+      </tr>
+      <tr>
+        <td><strong>Complain</strong><br><span class="art"><a href="https://gdpr-info.eu/art-77-gdpr/" rel="noopener" target="_blank">Art. 77</a></span></td>
+        <td>Complain to a supervisory authority.</td>
+        <td>Romania: <a href="https://www.dataprotection.ro" rel="noopener" target="_blank">Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</a>. In another EU/EEA country, your national authority.</td>
+      </tr>
+    </tbody>
+  </table>
   <p>
-    To exercise your rights, contact us at
-    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
-    We will acknowledge your request within 5 business days and respond
-    substantively within 30 calendar days.
-  </p>
-  <p>
-    Because we do not hold personal data ourselves (see above), most
-    requests relate to data held by Google/AdMob.  Where applicable, we
-    will forward your request to Google using their
+    <strong>How we handle requests by email.</strong> Write to <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    We acknowledge within 5 business days and answer within 30 calendar days
+    (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(3)</a>). We may ask you to confirm you are the person
+    the request concerns. Where a request concerns data held by Google, we
+    forward it using Google's
     <a href="https://support.google.com/googleplay/android-developer/answer/10165528"
        rel="noopener" target="_blank">User Data Deletion tools</a>.
+  </p>
+  <p>
+    <strong>Requests we may decline.</strong> Under <a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(5)</a> we
+    may refuse to act on, or charge a reasonable fee for, a request that is
+    manifestly unfounded or excessive, in particular because it repeats an
+    earlier one. We do not answer messages that are abusive, threatening, or
+    unrelated to this app. Where we refuse a request, we tell you that we are
+    refusing, why, and that you may complain to the supervisory authority
+    named above or seek a judicial remedy (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(4)</a>). If a
+    sender's messages meet the Art. 12(5) criteria, we reserve the right to
+    block further communication from that sender, for example by adding the
+    sender's address to our spam filter; a genuine request sent afterwards
+    from another address is still handled under this policy.
   </p>
 
   <h2>Your rights (California — CCPA)</h2>
@@ -430,8 +572,10 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   <ul>
     <li>Use the in-app consent control: <em>Top right corner &rarr;
         Manage ad consent</em> (select non-personalised ads).</li>
-    <li>Adjust your device-level ad preferences via Android Settings &rarr;
-        Privacy &rarr; Ads.</li>
+    <li>On Android, adjust your device-level ad preferences via
+        <em>Settings &rarr; Google &rarr; Ads</em>.</li>
+    <li>On iOS, use <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>
+        and <em>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising</em>.</li>
     <li>Manage Google ad personalisation at
         <a href="https://adssettings.google.com" rel="noopener"
            target="_blank">adssettings.google.com</a>.</li>

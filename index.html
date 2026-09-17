@@ -6,6 +6,9 @@
   <title>Amethyst - 4 Pic 1 Answer</title>
   <meta name="description"
         content="Amethyst is a multilingual 4 Pic 1 Answer puzzle game. Look at four pictures, find the answer they have in common, then trace it through the letter grid in one swipe.">
+  <meta property="og:title" content="Amethyst - 4 Pic 1 Answer">
+  <meta property="og:description" content="Guess the answer behind four pictures.">
+  <meta property="og:image" content="images/feature_graphic.png">
   <style>
 /* Palette — derived from the Jini logo:
    dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
@@ -246,6 +249,69 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .prose p  { margin-bottom: 10px; }
 .prose ul { margin: 6px 0 12px 20px; }
 .prose ul li { margin-bottom: 4px; }
+/* ── Store badges / platforms line (2026-09-17) ─────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+
+/* ── Hero: the Play feature graphic under the header ────── */
+.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero img {
+  max-width: 900px; width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Screenshot gallery: six phone captures, scroll-snap ─── */
+.shots {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  flex: 0 0 auto; scroll-snap-align: start;
+  width: 180px; margin: 0; text-align: center;
+}
+.shot img {
+  width: 100%; height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.10);
+  background: #000;
+}
+.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+@media (min-width: 900px) {
+  .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
+  .shot { width: calc((100% - 5 * 14px) / 6); }
+}
+
+/* ── Rights table on the privacy page ───────────────────── */
+.prose table.rights {
+  width: 100%; border-collapse: collapse;
+  margin: 12px 0 16px; font-size: 14px;
+}
+.prose table.rights th, .prose table.rights td {
+  border: 1px solid var(--border); padding: 8px 10px;
+  vertical-align: top; text-align: left;
+}
+.prose table.rights th {
+  background: var(--bg); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.prose table.rights td:first-child { white-space: nowrap; }
+.prose table.rights .art { font-size: 12px; color: var(--muted); }
+.prose table.rights .art a { color: var(--green2); }
+@media (max-width: 640px) {
+  .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
+  .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
+  .prose table.rights thead { display: none; }
+  .prose table.rights tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    margin-bottom: 10px; padding: 6px 0;
+  }
+  .prose table.rights td { border: none; padding: 4px 12px; white-space: normal; }
+  .prose table.rights td:first-child { white-space: normal; }
+}
 
   </style>
 </head>
@@ -256,11 +322,20 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   <p>Guess the answer behind four pictures.</p>
   <div class="cta-row">
     <span class="cta-soon">Coming soon to Google Play</span>
+    <span class="cta-soon">Coming soon to the App Store</span>
   </div>
+  <p class="platforms">For Android phones and tablets, and for iPhone and iPad.</p>
 </header>
+
+<div class="hero">
+  <img src="images/feature_graphic.png" width="1024" height="500"
+       alt="Four photo tiles of apples around a purple question-mark paw emblem,
+            above five empty letter tiles, on an amethyst background">
+</div>
 
 <nav>
   <a href="#about">About</a>
+  <a href="#screenshots">Screenshots</a>
   <a href="#app">The App</a>
   <a href="#features">Features</a>
   <a href="#contact">Contact</a>
@@ -293,6 +368,43 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
       all progress locally on your device.
       <a href="privacy_policy.html">Read our Privacy Policy.</a>
     </p>
+  </section>
+
+  <section id="screenshots">
+    <h2>Screenshots</h2>
+    <p class="lang-label">A first puzzle, start to finish. Scroll sideways on a phone.</p>
+    <div class="shots">
+      <figure class="shot">
+        <img src="images/screenshots/1.jpg" alt="A puzzle: four lily photos above the letter bank, with empty answer slots" loading="lazy"
+             width="540" height="1075">
+        <figcaption>1</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/screenshots/2.jpg" alt="The walkthrough card explaining the four clue images" loading="lazy"
+             width="540" height="1075">
+        <figcaption>2</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/screenshots/3.jpg" alt="The walkthrough card pointing at the answer slots" loading="lazy"
+             width="540" height="1075">
+        <figcaption>3</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/screenshots/4.jpg" alt="The walkthrough showing that every answer can be swiped through the letters" loading="lazy"
+             width="540" height="1075">
+        <figcaption>4</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/screenshots/5.jpg" alt="The answer LILY traced through the letter grid in one swipe" loading="lazy"
+             width="540" height="1075">
+        <figcaption>5</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/screenshots/6.jpg" alt="The solved puzzle with the Continue button and the speak-answer control" loading="lazy"
+             width="540" height="1075">
+        <figcaption>6</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section id="app">
@@ -343,6 +455,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
       <li>Hint power-ups: reveal a letter, remove wrong letters, or show the answer</li>
       <li>Dark, light, and high-contrast colour themes</li>
       <li>Automatic progress tracking — pick up where you left off</li>
+      <li>One game on Android and iOS — the same puzzles, the same privacy</li>
     </ul>
   </section>
 
@@ -362,7 +475,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
     <span class="sep">|</span>
     &copy; 2026 Amethyst
   </p>
-  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-09-17 18:08 UTC</p>
+  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-09-17 18:33 UTC</p>
 </footer>
 
 </body>
