@@ -24,6 +24,11 @@ body {
   line-height: 1.6;
 }
 a { color: var(--dark); text-decoration: none; }
+/* Links inside running text are visible without hovering (2026-09-18):
+   the legal frameworks on the privacy page, the studio name on Contact. */
+.prose a, #contact a, #about a {
+  color: var(--green2); text-decoration: underline; text-underline-offset: 2px;
+}
 a:hover { text-decoration: underline; }
 
 /* ── Header ────────────────────────────────────────────── */
@@ -210,6 +215,22 @@ p:last-child { margin-bottom: 0; }
   height: 8px;
   border-radius: 50%;
   background: var(--green);
+}
+
+/* ── Contact: the app's Contact page (2026-09-18) ───────── */
+.contact-logo {
+  display: block;
+  height: 72px; width: auto;
+  margin: 4px auto 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-blurb { text-align: center; }
+#contact h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 16px 0 4px;
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -448,12 +469,15 @@ a.zoom:hover img { transform: scale(1.02); }
     policy.  You can review it at
     <a href="https://policies.google.com/privacy" rel="noopener"
        target="_blank">policies.google.com/privacy</a>.
+    AdMob serves its ads under the <a href="https://support.google.com/admob/answer/6128543" rel="noopener" target="_blank">Google AdMob policies</a>;
+    on Google Play the app is also bound by the
+    <a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener" target="_blank">Google Play User Data policy</a>.
   </p>
   <p>
     <strong>Legal basis (EU/EEA/UK users):</strong> processing by AdMob is
     based on your explicit consent (<a href="https://gdpr-info.eu/art-6-gdpr/" rel="noopener" target="_blank">GDPR Art. 6(1)(a)</a>).  On first
-    launch you will be shown a consent dialogue powered by Google's User
-    Messaging Platform, on Android and on iOS alike.  You can change or
+    launch you will be shown a consent dialogue powered by Google's
+    <a href="https://support.google.com/admob/answer/10113207" rel="noopener" target="_blank">User Messaging Platform</a>, on Android and on iOS alike.  You can change or
     withdraw your consent at any time from
     <em>Top right corner &rarr; Manage ad consent</em>.
   </p>
@@ -484,17 +508,25 @@ a.zoom:hover img { transform: scale(1.02); }
     <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>. You can also
     turn off personalised ads from Apple in
     <em>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising</em>.
-    The App Store listing carries the app's privacy "nutrition label", which
-    summarises this page.
+    The App Store listing carries the app's privacy "nutrition label"
+    (<a href="https://developer.apple.com/app-store/app-privacy-details/" rel="noopener" target="_blank">Apple's app privacy details</a>), which
+    summarises this page as the
+    <a href="https://developer.apple.com/app-store/review/guidelines/#privacy" rel="noopener" target="_blank">App Store Review Guidelines §5.1</a> require.
   </p>
 
   <h2>Children's privacy</h2>
   <p>
     The app is not directed at children under the age of 13.  We do not
-    knowingly collect personal information from children. On first launch the
+    knowingly collect personal information from children (the standard set by
+    the United States
+    <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312" rel="noopener" target="_blank">Children's Online Privacy Protection Rule, 16 CFR Part 312</a>).
+    On first launch the
     app asks which age band you are in; a player who declares 17 or younger is
     never shown the personalisation dialogue and receives non-personalised
-    ads only. If you believe your child has provided personal information
+    ads only. That is also what Article 28 of the EU
+    <a href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" rel="noopener" target="_blank">Digital Services Act</a> requires: no advertising based on
+    profiling to a player who has declared that they are a minor.
+    If you believe your child has provided personal information
     through the app, please contact us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
     and we will take prompt action to remove it.
   </p>
@@ -512,6 +544,15 @@ a.zoom:hover img { transform: scale(1.02); }
   </p>
 
   <h2>Your rights (EU / EEA / UK — GDPR)</h2>
+  <p>
+    These rights come from the
+    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679" rel="noopener" target="_blank">General Data Protection Regulation (EU) 2016/679</a>.
+    <strong>United Kingdom:</strong> the UK GDPR keeps the same rights, and the
+    ICO's <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/" rel="noopener" target="_blank">Children's code</a> (the Age appropriate
+    design code) applies; the app's age band, and the rule that a declared
+    minor never receives personalised ads, are how the Code's standards are
+    met.
+  </p>
   <p>
     Because the app keeps everything on your device and we hold no copy, you
     can exercise most rights yourself, at once, without asking us:
@@ -584,7 +625,8 @@ a.zoom:hover img { transform: scale(1.02); }
     the request concerns. Where a request concerns data held by Google, we
     forward it using Google's
     <a href="https://support.google.com/googleplay/android-developer/answer/10165528"
-       rel="noopener" target="_blank">User Data Deletion tools</a>.
+       rel="noopener" target="_blank">User Data Deletion tools</a>; you can
+    also act directly in <a href="https://myaccount.google.com/data-and-privacy" rel="noopener" target="_blank">Google Data &amp; Privacy</a>.
   </p>
   <p>
     <strong>Requests we may decline.</strong> Under <a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(5)</a> we
@@ -603,7 +645,8 @@ a.zoom:hover img { transform: scale(1.02); }
   <h2>Your rights (California — CCPA)</h2>
   <p>
     California residents may opt out of the sharing of personal information
-    for cross-context behavioural advertising.  To do so:
+    for cross-context behavioural advertising
+    (<a href="https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&amp;part=4.&amp;lawCode=CIV&amp;title=1.81.5" rel="noopener" target="_blank">Cal. Civ. Code §1798.100 et seq.</a>).  To do so:
   </p>
   <ul>
     <li>Use the in-app consent control: <em>Top right corner &rarr;
@@ -619,6 +662,8 @@ a.zoom:hover img { transform: scale(1.02); }
   <p>
     We do not discriminate against users who exercise their CCPA rights.
     All app features are equally available regardless of ad consent choice.
+    How Google AdMob handles California residents' data is described on
+    <a href="https://support.google.com/admob/answer/9561891" rel="noopener" target="_blank">AdMob's California page</a>.
   </p>
 
   <h2>Changes to this policy</h2>

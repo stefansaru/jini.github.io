@@ -29,6 +29,11 @@ body {
   line-height: 1.6;
 }
 a { color: var(--dark); text-decoration: none; }
+/* Links inside running text are visible without hovering (2026-09-18):
+   the legal frameworks on the privacy page, the studio name on Contact. */
+.prose a, #contact a, #about a {
+  color: var(--green2); text-decoration: underline; text-underline-offset: 2px;
+}
 a:hover { text-decoration: underline; }
 
 /* ── Header ────────────────────────────────────────────── */
@@ -215,6 +220,22 @@ p:last-child { margin-bottom: 0; }
   height: 8px;
   border-radius: 50%;
   background: var(--green);
+}
+
+/* ── Contact: the app's Contact page (2026-09-18) ───────── */
+.contact-logo {
+  display: block;
+  height: 72px; width: auto;
+  margin: 4px auto 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-blurb { text-align: center; }
+#contact h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 16px 0 4px;
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -498,10 +519,9 @@ a.zoom:hover img { transform: scale(1.02); }
   <section id="features">
     <h2>Features</h2>
     <ul class="features">
+      <li>No invasive ads that interrupt you</li>
       <li>Free to play — no purchase required</li>
       <li>Works offline — no internet connection needed</li>
-      <li>No invasive ads that interrupt you</li>
-      <li>800+ puzzles across 28 themed categories</li>
       <li>Fully localised in 10 languages</li>
       <li>Hint power-ups: reveal a letter, remove wrong letters, or show the answer</li>
       <li>Dark, light, and high-contrast colour themes</li>
@@ -512,7 +532,13 @@ a.zoom:hover img { transform: scale(1.02); }
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Questions, feedback, or support requests:</p>
+    <img class="contact-logo" src="images/jini_logo.jpg" alt="Jini Solutions"
+         height="72">
+    <p class="contact-blurb"><a href="https://jini.solutions/" rel="noopener" target="_blank">Jini Solutions</a> is a small indie game studio from Bucharest, Romania.</p>
+    <h3>Did you find a problem?</h3>
+    <p>Write to us if you want to send a suggestion, propose a new feature or theme, suggest a new language for translation, or report an app problem, a translation error, or an inappropriate image.</p>
+    <h3>Include relevant details</h3>
+    <p>Please include screenshots or screen recordings detailing the problems. This helps us fix the problem faster.</p>
     <p><a href="mailto:hello@jini.solutions">hello@jini.solutions</a></p>
   </section>
 
@@ -526,7 +552,7 @@ a.zoom:hover img { transform: scale(1.02); }
     <span class="sep">|</span>
     &copy; 2026 Amethyst
   </p>
-  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-09-17 18:39 UTC</p>
+  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-09-17 23:20 UTC</p>
 </footer>
 
 <div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog"
