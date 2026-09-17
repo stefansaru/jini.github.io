@@ -308,6 +308,42 @@ header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,
   .prose table.rights td:first-child { white-space: normal; }
 }
 
+/* ── Click to enlarge: the zoom links and the lightbox ─────── */
+a.zoom { display: block; cursor: zoom-in; }
+a.zoom:hover { text-decoration: none; }
+a.zoom img { transition: transform 0.15s; }
+a.zoom:hover img { transform: scale(1.02); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(15,23,42,0.92);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 64px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 120px);
+  border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  cursor: zoom-out; background: #000;
+}
+.lightbox button {
+  position: absolute; border: none; background: rgba(255,255,255,0.12);
+  color: var(--white); font-size: 28px; line-height: 1;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+}
+.lightbox button:hover { background: rgba(255,255,255,0.25); }
+.lightbox .lb-close { top: 16px; right: 16px; }
+.lightbox .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-caption {
+  position: absolute; left: 0; right: 0; bottom: 14px;
+  text-align: center; color: rgba(255,255,255,0.75); font-size: 13px;
+  padding: 0 64px; margin: 0;
+}
+@media (max-width: 640px) {
+  .lightbox { padding: 56px 8px 40px; }
+  .lightbox img { max-height: calc(100vh - 100px); }
+}
+
   </style>
 </head>
 <body>
