@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy for Amethyst</title>
+  <meta name="description"
+        content="How Amethyst handles your data.">
   <style>
 /* Palette, derived from the Jini logo:
    dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
@@ -15,6 +17,7 @@
   --white:  #FFFFFF;
   --border: #E5E7EB;
   --muted:  #6B7280;
+  --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -26,26 +29,57 @@ body {
 a { color: var(--dark); text-decoration: none; }
 /* Links inside running text are visible without hovering (2026-09-18):
    the legal frameworks on the privacy page, the studio name on Contact. */
-.prose a, #contact a, #about a {
-  color: var(--green2); text-decoration: underline; text-underline-offset: 2px;
+.prose a, #contact a, #about a, #privacy a, .section-link a {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ── Skip link and the shared site header (2026-10-21) ─── */
+.skip {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  background: var(--white); color: var(--dark); font-weight: 700;
+  padding: 8px 14px; border-radius: 6px;
+}
+.skip:focus { top: 8px; }
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-bar {
+  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.brand img { height: 32px; width: auto; border-radius: 6px; }
+.site-nav { display: flex; gap: 4px 20px; flex-wrap: wrap; }
+.site-nav a {
+  font-weight: 600; font-size: 15px; padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
 }
 a:hover { text-decoration: underline; }
 
 /* ── Header ────────────────────────────────────────────── */
-header {
+.app-hero, .studio-hero {
   background: var(--dark);
   color: var(--white);
   text-align: center;
   padding: 72px 24px 56px;
 }
-header h1 {
+.app-hero h1, .studio-hero h1 {
   font-size: 48px;
   font-weight: 800;
   letter-spacing: -1px;
 }
 /* Green dot accent: mirrors the logo dots */
-header h1 span.dot { color: var(--green); }
-header p {
+.app-hero span.dot, .studio-hero span.dot { color: var(--green); }
+.app-hero p, .studio-hero p {
   font-size: 20px;
   margin-top: 12px;
   color: rgba(255,255,255,0.75);
@@ -72,25 +106,25 @@ header p {
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
-nav {
+.page-nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
+  padding: 12px 16px;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
-nav a {
+.page-nav a {
+  display: inline-block;
   color: var(--dark);
   font-weight: 600;
   font-size: 14px;
-  margin: 0 14px;
+  margin: 2px 12px;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
   transition: border-color 0.15s, color 0.15s;
 }
-nav a:hover { color: var(--green2); border-bottom-color: var(--green); text-decoration: none; }
+.page-nav a:hover, .page-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
 
 /* ── Main / Sections ────────────────────────────────────── */
 main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
@@ -243,6 +277,7 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--dark); }
 footer .sep { margin: 0 10px; opacity: 0.4; }
+.nowrap { white-space: nowrap; }
 
 /* ── Privacy prose ──────────────────────────────────────── */
 .prose { font-size: 15px; color: #374151; }
@@ -267,7 +302,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .prose ul li { margin-bottom: 4px; }
 /* ── Store badges / platforms line (2026-09-17) ─────────── */
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+.app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
 
 /* ── Hero: the Play feature graphic under the header ────── */
 .hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
@@ -316,7 +351,7 @@ header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,
 }
 .prose table.rights td:first-child { white-space: nowrap; }
 .prose table.rights .art { font-size: 12px; color: var(--muted); }
-.prose table.rights .art a { color: var(--green2); }
+.prose table.rights .art a { color: var(--link); }
 @media (max-width: 640px) {
   .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
   .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
@@ -365,30 +400,114 @@ a.zoom:hover img { transform: scale(1.02); }
   .lightbox img { max-height: calc(100vh - 100px); }
 }
 
+/* ── Slim heroes (privacy pages) and the studio hero ────── */
+.app-hero--slim, .studio-hero--slim { padding: 22px 24px; }
+.app-hero p.eyebrow, .studio-hero p.eyebrow {
+  font-size: 22px; font-weight: 800; color: var(--white); margin: 0;
+}
+.page-title { font-size: 26px; margin-bottom: 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.updated { margin-top: 6px; font-size: 12px; }
+
+/* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
+main.wide { max-width: 1080px; }
+.app-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+}
+.app-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  border-top: 5px solid var(--accent, var(--green));
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.app-card p { margin: 0; }
+.app-head { display: flex; gap: 14px; align-items: center; }
+.app-icon {
+  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--white);
+}
+.app-monogram {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--dark)); color: var(--white);
+  font-weight: 800; font-size: 22px; letter-spacing: 0.5px; border: none;
+}
+.app-card h3 { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.app-card h3 a { color: var(--dark); }
+.app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
+.badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.badges li {
+  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
+}
+.app-links {
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  margin-top: auto !important; padding-top: 6px;
+}
+.app-links a:not(.cta-btn) {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+  font-weight: 600; font-size: 14px;
+}
+.app-soon {
+  display: inline-block; padding: 8px 14px; border-radius: 8px;
+  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+}
+.app-card .cta-btn { padding: 8px 18px; }
+
+/* ── Privacy index, screenshots placeholder ─────────────── */
+.policy-list { list-style: none; margin: 16px 0 0 !important; }
+.policy-list li { padding: 12px 0; border-top: 1px solid var(--border); }
+.shots-placeholder {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 36px 20px; text-align: center; color: var(--muted);
+}
+
+/* ── Phones and small tablets ───────────────────────────── */
+@media (max-width: 640px) {
+  .site-bar { padding: 8px 16px; }
+  .brand span { font-size: 16px; }
+  main { padding: 24px 16px 40px; }
+  section { padding: 20px 18px; border-radius: 14px; }
+  .app-hero, .studio-hero { padding: 40px 16px 32px; }
+  .app-hero h1, .studio-hero h1 { font-size: 34px; }
+  .app-hero p, .studio-hero p { font-size: 17px; }
+  .hero { padding: 0 16px 24px; }
+  .page-nav a { margin: 2px 8px; }
+}
+
   </style>
 </head>
 <body>
 
-<header style="padding:28px 24px;">
-  <h1 style="font-size:24px;letter-spacing:0;">
-    Amethyst<span class="dot">.</span>
-  </h1>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-bar">
+    <a class="brand" href="index.html">
+      <img src="images/jini_logo.jpg" alt="" width="49" height="32">
+      <span>Jini Solutions</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html#apps">Apps</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="privacy/index.html" aria-current="page">Privacy</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
-  <a href="index.html#about">About</a>
-  <a href="index.html#screenshots">Screenshots</a>
-  <a href="index.html#app">The App</a>
-  <a href="index.html#features">Features</a>
-  <a href="index.html#contact">Contact</a>
-  <a href="privacy_policy.html" style="border-bottom:2px solid var(--green);">Privacy</a>
+<div class="app-hero app-hero--slim">
+  <p class="eyebrow">Amethyst<span class="dot">.</span></p>
+</div>
+
+<nav class="page-nav" aria-label="Amethyst">
+  <a href="amethyst/index.html">Amethyst</a>
+  <a href="amethyst/index.html#contact">Contact</a>
+  <a href="privacy_policy.html" aria-current="page">Privacy</a>
 </nav>
 
-<main>
+<main id="main">
 <section class="prose">
 
   <h1>Privacy Policy</h1>
-  <p class="subtitle">Last updated: 2026-10-14 &middot; applies to the
+  <p class="subtitle">Last updated: 2026-10-22 &middot; applies to the
     Android app (Google Play) and the iOS app (App Store)</p>
 
   <p>
@@ -696,13 +815,15 @@ a.zoom:hover img { transform: scale(1.02); }
 </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <p>
-    <a href="index.html">Amethyst</a>
+    <a href="index.html#apps">Apps</a>
+    <span class="sep">|</span>
+    <a href="privacy/index.html">Privacy</a>
     <span class="sep">|</span>
     <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
     <span class="sep">|</span>
-    &copy; 2026 Jini Solutions
+    <span class="nowrap">&copy; 2026 Jini Solutions</span>
   </p>
 </footer>
 

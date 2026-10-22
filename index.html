@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amethyst - 4 Pic 1 Answer</title>
+  <title>Jini Solutions: apps</title>
   <meta name="description"
-        content="Amethyst is a multilingual 4 Pic 1 Answer puzzle game. Look at four pictures, find the answer they have in common, then trace it through the letter grid in one swipe.">
-  <meta property="og:title" content="Amethyst - 4 Pic 1 Answer">
-  <meta property="og:description" content="Guess the answer behind four pictures.">
-  <meta property="og:image" content="images/feature_graphic.png">
+        content="Jini Solutions, an independent studio in Bucharest, Romania. Apps: Amethyst, Day OK.">
+  <link rel="canonical" href="https://jini.solutions/">
   <style>
 /* Palette, derived from the Jini logo:
    dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
@@ -20,6 +18,7 @@
   --white:  #FFFFFF;
   --border: #E5E7EB;
   --muted:  #6B7280;
+  --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -31,26 +30,57 @@ body {
 a { color: var(--dark); text-decoration: none; }
 /* Links inside running text are visible without hovering (2026-09-18):
    the legal frameworks on the privacy page, the studio name on Contact. */
-.prose a, #contact a, #about a {
-  color: var(--green2); text-decoration: underline; text-underline-offset: 2px;
+.prose a, #contact a, #about a, #privacy a, .section-link a {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ── Skip link and the shared site header (2026-10-21) ─── */
+.skip {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  background: var(--white); color: var(--dark); font-weight: 700;
+  padding: 8px 14px; border-radius: 6px;
+}
+.skip:focus { top: 8px; }
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-bar {
+  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.brand img { height: 32px; width: auto; border-radius: 6px; }
+.site-nav { display: flex; gap: 4px 20px; flex-wrap: wrap; }
+.site-nav a {
+  font-weight: 600; font-size: 15px; padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
 }
 a:hover { text-decoration: underline; }
 
 /* ── Header ────────────────────────────────────────────── */
-header {
+.app-hero, .studio-hero {
   background: var(--dark);
   color: var(--white);
   text-align: center;
   padding: 72px 24px 56px;
 }
-header h1 {
+.app-hero h1, .studio-hero h1 {
   font-size: 48px;
   font-weight: 800;
   letter-spacing: -1px;
 }
 /* Green dot accent: mirrors the logo dots */
-header h1 span.dot { color: var(--green); }
-header p {
+.app-hero span.dot, .studio-hero span.dot { color: var(--green); }
+.app-hero p, .studio-hero p {
   font-size: 20px;
   margin-top: 12px;
   color: rgba(255,255,255,0.75);
@@ -77,25 +107,25 @@ header p {
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
-nav {
+.page-nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
+  padding: 12px 16px;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
-nav a {
+.page-nav a {
+  display: inline-block;
   color: var(--dark);
   font-weight: 600;
   font-size: 14px;
-  margin: 0 14px;
+  margin: 2px 12px;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
   transition: border-color 0.15s, color 0.15s;
 }
-nav a:hover { color: var(--green2); border-bottom-color: var(--green); text-decoration: none; }
+.page-nav a:hover, .page-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
 
 /* ── Main / Sections ────────────────────────────────────── */
 main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
@@ -248,6 +278,7 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--dark); }
 footer .sep { margin: 0 10px; opacity: 0.4; }
+.nowrap { white-space: nowrap; }
 
 /* ── Privacy prose ──────────────────────────────────────── */
 .prose { font-size: 15px; color: #374151; }
@@ -272,7 +303,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .prose ul li { margin-bottom: 4px; }
 /* ── Store badges / platforms line (2026-09-17) ─────────── */
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+.app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
 
 /* ── Hero: the Play feature graphic under the header ────── */
 .hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
@@ -321,7 +352,7 @@ header p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,
 }
 .prose table.rights td:first-child { white-space: nowrap; }
 .prose table.rights .art { font-size: 12px; color: var(--muted); }
-.prose table.rights .art a { color: var(--green2); }
+.prose table.rights .art a { color: var(--link); }
 @media (max-width: 640px) {
   .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
   .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
@@ -370,236 +401,180 @@ a.zoom:hover img { transform: scale(1.02); }
   .lightbox img { max-height: calc(100vh - 100px); }
 }
 
+/* ── Slim heroes (privacy pages) and the studio hero ────── */
+.app-hero--slim, .studio-hero--slim { padding: 22px 24px; }
+.app-hero p.eyebrow, .studio-hero p.eyebrow {
+  font-size: 22px; font-weight: 800; color: var(--white); margin: 0;
+}
+.page-title { font-size: 26px; margin-bottom: 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.updated { margin-top: 6px; font-size: 12px; }
+
+/* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
+main.wide { max-width: 1080px; }
+.app-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+}
+.app-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  border-top: 5px solid var(--accent, var(--green));
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.app-card p { margin: 0; }
+.app-head { display: flex; gap: 14px; align-items: center; }
+.app-icon {
+  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--white);
+}
+.app-monogram {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--dark)); color: var(--white);
+  font-weight: 800; font-size: 22px; letter-spacing: 0.5px; border: none;
+}
+.app-card h3 { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.app-card h3 a { color: var(--dark); }
+.app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
+.badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.badges li {
+  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
+}
+.app-links {
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  margin-top: auto !important; padding-top: 6px;
+}
+.app-links a:not(.cta-btn) {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+  font-weight: 600; font-size: 14px;
+}
+.app-soon {
+  display: inline-block; padding: 8px 14px; border-radius: 8px;
+  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+}
+.app-card .cta-btn { padding: 8px 18px; }
+
+/* ── Privacy index, screenshots placeholder ─────────────── */
+.policy-list { list-style: none; margin: 16px 0 0 !important; }
+.policy-list li { padding: 12px 0; border-top: 1px solid var(--border); }
+.shots-placeholder {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 36px 20px; text-align: center; color: var(--muted);
+}
+
+/* ── Phones and small tablets ───────────────────────────── */
+@media (max-width: 640px) {
+  .site-bar { padding: 8px 16px; }
+  .brand span { font-size: 16px; }
+  main { padding: 24px 16px 40px; }
+  section { padding: 20px 18px; border-radius: 14px; }
+  .app-hero, .studio-hero { padding: 40px 16px 32px; }
+  .app-hero h1, .studio-hero h1 { font-size: 34px; }
+  .app-hero p, .studio-hero p { font-size: 17px; }
+  .hero { padding: 0 16px 24px; }
+  .page-nav a { margin: 2px 8px; }
+}
+
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Amethyst<span class="dot">.</span></h1>
-  <p>Guess the answer behind four pictures.</p>
-  <div class="cta-row">
-    <span class="cta-soon">Coming soon to Google Play</span>
-    <span class="cta-soon">Coming soon to the App Store</span>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-bar">
+    <a class="brand" href="index.html">
+      <img src="images/jini_logo.jpg" alt="" width="49" height="32">
+      <span>Jini Solutions</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html#apps" aria-current="page">Apps</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="privacy/index.html">Privacy</a>
+    </nav>
   </div>
-  <p class="platforms">For Android phones and tablets, and for iPhone and iPad.</p>
 </header>
 
-<div class="hero">
-  <a class="zoom" href="images/feature_graphic.png" data-caption="Amethyst">
-    <img src="images/feature_graphic.png" width="1024" height="500"
-         alt="Four photo tiles of apples around a purple question-mark paw emblem,
-              above five empty letter tiles, on an amethyst background">
-  </a>
+<div class="studio-hero">
+  <h1>Jini Solutions<span class="dot">.</span></h1>
+  <p>Small, calm apps from an independent studio in Bucharest, Romania.</p>
 </div>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#screenshots">Screenshots</a>
-  <a href="#app">The App</a>
-  <a href="#features">Features</a>
-  <a href="#contact">Contact</a>
-  <a href="privacy_policy.html">Privacy</a>
-</nav>
+<main id="main" class="wide">
 
-<main>
-
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      Amethyst is a multilingual &ldquo;4 Pic 1 Answer&rdquo; puzzle
-      game. Look at four pictures, find the answer they have in common, then
-      trace it through the letter grid in one swipe.
-    </p>
-    <p>
-      Every puzzle is the one word the four pictures share, shown in four
-      different ways. Short answers come quickly. The long ones take some
-      thought.
-    </p>
-    <p>
-      The game is simple and uncluttered. There is nothing to buy and no
-      energy timer. The ads are a small banner and a rewarded video you can
-      choose to watch. There are no full-screen ads between puzzles and no
-      forced videos.
-    </p>
-    <p>
-      The app does not require an account and stores all progress on your
-      device.
-      <a href="privacy_policy.html">Read the Privacy Policy.</a>
-    </p>
-  </section>
-
-  <section id="screenshots">
-    <h2>Screenshots</h2>
-    <p class="lang-label">A first puzzle, start to finish. Tap an image to enlarge it;
-      scroll sideways on a phone.</p>
-    <div class="shots">
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/1.jpg" data-caption="A puzzle: four lily photos above the letter bank, with empty answer slots">
-          <img src="images/screenshots/1.jpg" alt="A puzzle: four lily photos above the letter bank, with empty answer slots" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>1</figcaption>
-      </figure>
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/2.jpg" data-caption="The walkthrough card explaining the four clue images">
-          <img src="images/screenshots/2.jpg" alt="The walkthrough card explaining the four clue images" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>2</figcaption>
-      </figure>
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/3.jpg" data-caption="The walkthrough card pointing at the answer slots">
-          <img src="images/screenshots/3.jpg" alt="The walkthrough card pointing at the answer slots" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>3</figcaption>
-      </figure>
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/4.jpg" data-caption="The walkthrough showing that every answer can be swiped through the letters">
-          <img src="images/screenshots/4.jpg" alt="The walkthrough showing that every answer can be swiped through the letters" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>4</figcaption>
-      </figure>
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/5.jpg" data-caption="The answer LILY traced through the letter grid in one swipe">
-          <img src="images/screenshots/5.jpg" alt="The answer LILY traced through the letter grid in one swipe" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>5</figcaption>
-      </figure>
-      <figure class="shot">
-        <a class="zoom" href="images/screenshots/6.jpg" data-caption="The solved puzzle with the Continue button and the speak-answer control">
-          <img src="images/screenshots/6.jpg" alt="The solved puzzle with the Continue button and the speak-answer control" loading="lazy"
-               width="540" height="1075">
-        </a>
-        <figcaption>6</figcaption>
-      </figure>
+  <section id="apps" aria-labelledby="apps-title">
+    <h2 id="apps-title">Apps</h2>
+    <div class="app-grid">
+      <article class="app-card" id="amethyst" style="--accent:#6D28D9"
+               aria-labelledby="amethyst-title">
+        <div class="app-head">
+          <img class="app-icon" src="images/apps/amethyst.png" alt="" width="64" height="64">
+          <div>
+            <h3 id="amethyst-title"><a href="amethyst/index.html">Amethyst</a></h3>
+            <p class="app-tagline">Guess the answer behind four pictures.</p>
+          </div>
+        </div>
+        <ul class="badges" aria-label="Platforms"><li>Android</li></ul>
+        <p>A multilingual 4 Pic 1 Answer puzzle game. Look at four pictures, find the answer they have in common, then trace it through the letter grid in one swipe. Free, with nothing to buy.</p>
+        <p class="app-links">
+          <span class="app-soon">Coming soon to Google Play</span>
+          <a href="amethyst/index.html">About Amethyst</a>
+          <a href="privacy_policy.html">Privacy policy</a>
+        </p>
+      </article>
+      <article class="app-card" id="dayok" style="--accent:#1D4ED8"
+               aria-labelledby="dayok-title">
+        <div class="app-head">
+          <img class="app-icon" src="images/apps/dayok.png" alt="" width="64" height="64">
+          <div>
+            <h3 id="dayok-title"><a href="dayok/index.html">Day OK</a></h3>
+            <p class="app-tagline">A calm calendar and clock for your TV and tablet.</p>
+          </div>
+        </div>
+        <ul class="badges" aria-label="Platforms"><li>Android</li><li>Google TV</li></ul>
+        <p>Day OK shows your day, week, month and year at a glance. It reads the calendars your device already syncs and has no internet access of its own. No ads, no account, no in-app purchases: one price, everything included.</p>
+        <p class="app-links">
+          <span class="app-soon">Coming soon to Google Play</span>
+          <a href="dayok/index.html">About Day OK</a>
+          <a href="dayok/privacy/index.html">Privacy policy</a>
+        </p>
+      </article>
     </div>
-  </section>
-
-  <section id="app">
-    <h2>The App</h2>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="number">28</span>
-        <div class="label">Themes</div>
-      </div>
-      <div class="stat-card">
-        <span class="number">800+</span>
-        <div class="label">Puzzles</div>
-      </div>
-      <div class="stat-card">
-        <span class="number">16000+</span>
-        <div class="label">Images</div>
-      </div>
-      <div class="stat-card">
-        <span class="number">10</span>
-        <div class="label">Languages</div>
-      </div>
-    </div>
-
-    <p class="lang-label">Available in 10 languages:</p>
-    <div class="lang-badges">
-          <span class="lang-badge">English (US)</span>
-          <span class="lang-badge">English (UK)</span>
-          <span class="lang-badge">German</span>
-          <span class="lang-badge">Spanish</span>
-          <span class="lang-badge">French</span>
-          <span class="lang-badge">Italian</span>
-          <span class="lang-badge">Dutch</span>
-          <span class="lang-badge">Portuguese (Portugal)</span>
-          <span class="lang-badge">Portuguese (Brazil)</span>
-          <span class="lang-badge">Romanian</span>
-    </div>
-  </section>
-
-  <section id="features">
-    <h2>Features</h2>
-    <ul class="features">
-      <li>No invasive ads that interrupt you</li>
-      <li>Free to play, nothing to buy</li>
-      <li>Works offline</li>
-      <li>Fully localised in 10 languages</li>
-      <li>Hints: reveal a letter, clear the wrong letters, or show the answer</li>
-      <li>Light, dark and high-contrast palettes</li>
-      <li>The same game on Android and iOS</li>
-    </ul>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <img class="contact-logo" src="images/jini_logo.jpg" alt="Jini Solutions"
+    <img class="contact-logo" src="images/jini_logo.jpg" alt="Jini Solutions logo"
          height="72">
-    <p class="contact-blurb"><a href="https://jini.solutions/" rel="noopener" target="_blank">Jini Solutions</a> is a small indie game studio from Bucharest, Romania.</p>
-    <h3>Did you find a problem?</h3>
-    <p>Write to us if you want to send a suggestion, propose a new feature or theme, suggest a new language for translation, or report an app problem, a translation error, or an inappropriate image.</p>
-    <h3>Include relevant details</h3>
-    <p>Please include screenshots or screen recordings detailing the problems. This helps us fix the problem faster.</p>
-    <p><a href="mailto:hello@jini.solutions">hello@jini.solutions</a></p>
+    <p class="contact-blurb">Jini Solutions is a small independent studio from
+      Bucharest, Romania, run by a sole developer.</p>
+    <p>
+      Questions, problems or suggestions about any of the apps: write to
+      <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>. Each app also has a Contact page
+      inside it that can prepare the email for you.
+    </p>
   </section>
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <p>
-    <a href="privacy_policy.html">Privacy Policy</a>
+    <a href="index.html#apps">Apps</a>
+    <span class="sep">|</span>
+    <a href="privacy/index.html">Privacy</a>
     <span class="sep">|</span>
     <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
     <span class="sep">|</span>
-    &copy; 2026 Amethyst
+    <span class="nowrap">&copy; 2026 Jini Solutions</span>
   </p>
-  <p style="margin-top:6px;font-size:12px;opacity:0.5;">Updated 2026-10-14 01:54 UTC</p>
+  <p class="updated">Updated 2026-10-22 09:53 UTC</p>
 </footer>
-
-<div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog"
-     aria-label="Enlarged image">
-  <button type="button" class="lb-close" aria-label="Close">&times;</button>
-  <button type="button" class="lb-prev" aria-label="Previous image">&#8249;</button>
-  <img alt="Enlarged image">
-  <button type="button" class="lb-next" aria-label="Next image">&#8250;</button>
-  <p class="lb-caption"></p>
-</div>
 <script>
 (function () {
-  var links = Array.prototype.slice.call(document.querySelectorAll("a.zoom"));
-  var box = document.getElementById("lightbox");
-  if (!box || !links.length) return;
-  var img = box.querySelector("img"), cap = box.querySelector(".lb-caption");
-  var prev = box.querySelector(".lb-prev"), next = box.querySelector(".lb-next");
-  var current = -1;
-  function show(i) {
-    current = (i + links.length) % links.length;
-    var a = links[current];
-    img.src = a.getAttribute("href");
-    img.alt = a.getAttribute("data-caption") || "";
-    cap.textContent = img.alt;
-    var many = links.length > 1;
-    prev.hidden = !many; next.hidden = !many;
-    box.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-  function hide() {
-    box.hidden = true; img.src = ""; current = -1;
-    document.body.style.overflow = "";
-  }
-  links.forEach(function (a, i) {
-    a.addEventListener("click", function (e) { e.preventDefault(); show(i); });
-  });
-  box.querySelector(".lb-close").addEventListener("click", hide);
-  prev.addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
-  next.addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
-  box.addEventListener("click", function (e) { if (e.target === box || e.target === img) hide(); });
-  document.addEventListener("keydown", function (e) {
-    if (box.hidden) return;
-    if (e.key === "Escape") hide();
-    else if (e.key === "ArrowLeft") show(current - 1);
-    else if (e.key === "ArrowRight") show(current + 1);
-  });
+  var old = ["about", "screenshots", "app", "features"];
+  var id = location.hash.replace("#", "");
+  if (old.indexOf(id) >= 0) location.replace("amethyst/index.html#" + id);
 })();
 </script>
-
 
 </body>
 </html>
