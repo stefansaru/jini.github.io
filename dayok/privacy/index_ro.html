@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politica de confidențialitate Day OK</title>
+  <meta name="description"
+        content="Cum tratează Day OK datele tale: nu colectează nimic, nu trimite nimic și nu partajează nimic.">
+  <link rel="canonical" href="https://jini.solutions/dayok/privacy/index_ro.html">
+  <link rel="alternate" hreflang="en" href="https://jini.solutions/dayok/privacy/">
+  <link rel="alternate" hreflang="ro" href="https://jini.solutions/dayok/privacy/index_ro.html">
+  <link rel="alternate" hreflang="x-default" href="https://jini.solutions/dayok/privacy/">
+  <style>
+/* Palette, derived from the Jini logo:
+   dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
+:root {
+  --dark:   #1F2937;
+  --green:  #00D95F;
+  --green2: #00B84E;   /* hover / pressed */
+  --bg:     #F8FAFC;
+  --white:  #FFFFFF;
+  --border: #E5E7EB;
+  --muted:  #6B7280;
+  --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+}
+a { color: var(--dark); text-decoration: none; }
+/* Links inside running text are visible without hovering (2026-09-18):
+   the legal frameworks on the privacy page, the studio name on Contact. */
+.prose a, #contact a, #about a, #privacy a, .section-link a {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ── Skip link and the shared site header (2026-10-21) ─── */
+.skip {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  background: var(--white); color: var(--dark); font-weight: 700;
+  padding: 8px 14px; border-radius: 6px;
+}
+.skip:focus { top: 8px; }
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-bar {
+  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.brand img { height: 32px; width: auto; border-radius: 6px; }
+.site-nav { display: flex; gap: 4px 20px; flex-wrap: wrap; }
+.site-nav a {
+  font-weight: 600; font-size: 15px; padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ── Header ────────────────────────────────────────────── */
+.app-hero, .studio-hero {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 72px 24px 56px;
+}
+.app-hero h1, .studio-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+/* Green dot accent: mirrors the logo dots */
+.app-hero span.dot, .studio-hero span.dot { color: var(--green); }
+.app-hero p, .studio-hero p {
+  font-size: 20px;
+  margin-top: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.cta-row { margin-top: 28px; }
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--green2); text-decoration: none; }
+.cta-soon {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  padding: 11px 24px;
+  border-radius: 6px;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+.page-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  text-align: center;
+}
+.page-nav a {
+  display: inline-block;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 2px 12px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.page-nav a:hover, .page-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+
+/* ── Main / Sections ────────────────────────────────────── */
+main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+}
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+/* Green left rule on h2 */
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Stats grid ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-card .number {
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--green2);
+  letter-spacing: -1px;
+}
+.stat-card .label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ── Theme list ─────────────────────────────────────────── */
+.theme-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.theme-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.theme-list li .theme-name { font-weight: 600; }
+.theme-list li .puzzle-count {
+  background: #E6F9EE;
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ── Language badges ────────────────────────────────────── */
+.lang-label { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.lang-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.lang-badge {
+  background: var(--dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* ── Features list ──────────────────────────────────────── */
+.features { list-style: none; }
+.features li {
+  padding: 6px 0 6px 24px;
+  position: relative;
+  font-size: 15px;
+  color: #374151;
+  border-bottom: 1px solid var(--border);
+}
+.features li:last-child { border-bottom: none; }
+.features li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* ── Contact: the app's Contact page (2026-09-18) ───────── */
+.contact-logo {
+  display: block;
+  height: 72px; width: auto;
+  margin: 4px auto 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-blurb { text-align: center; }
+#contact h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 16px 0 4px;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--dark); }
+footer .sep { margin: 0 10px; opacity: 0.4; }
+.nowrap { white-space: nowrap; }
+
+/* ── Privacy prose ──────────────────────────────────────── */
+.prose { font-size: 15px; color: #374151; }
+.prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.prose h2 {
+  font-size: 16px; font-weight: 700; color: var(--dark);
+  margin: 24px 0 8px;
+}
+.prose h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative; top: -1px;
+}
+.prose p  { margin-bottom: 10px; }
+.prose ul { margin: 6px 0 12px 20px; }
+.prose ul li { margin-bottom: 4px; }
+/* ── Store badges / platforms line (2026-09-17) ─────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+
+/* ── Hero: the Play feature graphic under the header ────── */
+.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero img {
+  max-width: 900px; width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Screenshot gallery: six phone captures, scroll-snap ─── */
+.shots {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  flex: 0 0 auto; scroll-snap-align: start;
+  width: 180px; margin: 0; text-align: center;
+}
+.shot img {
+  width: 100%; height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.10);
+  background: #000;
+}
+.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+@media (min-width: 900px) {
+  .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
+  .shot { width: calc((100% - 5 * 14px) / 6); }
+}
+
+/* ── Rights table on the privacy page ───────────────────── */
+.prose table.rights {
+  width: 100%; border-collapse: collapse;
+  margin: 12px 0 16px; font-size: 14px;
+}
+.prose table.rights th, .prose table.rights td {
+  border: 1px solid var(--border); padding: 8px 10px;
+  vertical-align: top; text-align: left;
+}
+.prose table.rights th {
+  background: var(--bg); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.prose table.rights td:first-child { white-space: nowrap; }
+.prose table.rights .art { font-size: 12px; color: var(--muted); }
+.prose table.rights .art a { color: var(--link); }
+@media (max-width: 640px) {
+  .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
+  .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
+  .prose table.rights thead { display: none; }
+  .prose table.rights tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    margin-bottom: 10px; padding: 6px 0;
+  }
+  .prose table.rights td { border: none; padding: 4px 12px; white-space: normal; }
+  .prose table.rights td:first-child { white-space: normal; }
+}
+
+/* ── Click to enlarge: the zoom links and the lightbox ─────── */
+a.zoom { display: block; cursor: zoom-in; }
+a.zoom:hover { text-decoration: none; }
+a.zoom img { transition: transform 0.15s; }
+a.zoom:hover img { transform: scale(1.02); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(15,23,42,0.92);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 64px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 120px);
+  border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  cursor: zoom-out; background: #000;
+}
+.lightbox button {
+  position: absolute; border: none; background: rgba(255,255,255,0.12);
+  color: var(--white); font-size: 28px; line-height: 1;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+}
+.lightbox button:hover { background: rgba(255,255,255,0.25); }
+.lightbox .lb-close { top: 16px; right: 16px; }
+.lightbox .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-caption {
+  position: absolute; left: 0; right: 0; bottom: 14px;
+  text-align: center; color: rgba(255,255,255,0.75); font-size: 13px;
+  padding: 0 64px; margin: 0;
+}
+@media (max-width: 640px) {
+  .lightbox { padding: 56px 8px 40px; }
+  .lightbox img { max-height: calc(100vh - 100px); }
+}
+
+/* ── Slim heroes (privacy pages) and the studio hero ────── */
+.app-hero--slim, .studio-hero--slim { padding: 22px 24px; }
+.app-hero p.eyebrow, .studio-hero p.eyebrow {
+  font-size: 22px; font-weight: 800; color: var(--white); margin: 0;
+}
+.page-title { font-size: 26px; margin-bottom: 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.updated { margin-top: 6px; font-size: 12px; }
+
+/* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
+main.wide { max-width: 1080px; }
+.app-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+}
+.app-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  border-top: 5px solid var(--accent, var(--green));
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.app-card p { margin: 0; }
+.app-head { display: flex; gap: 14px; align-items: center; }
+.app-icon {
+  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--white);
+}
+.app-monogram {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--dark)); color: var(--white);
+  font-weight: 800; font-size: 22px; letter-spacing: 0.5px; border: none;
+}
+.app-card h3 { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.app-card h3 a { color: var(--dark); }
+.app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
+.badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.badges li {
+  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
+}
+.app-links {
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  margin-top: auto !important; padding-top: 6px;
+}
+.app-links a:not(.cta-btn) {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+  font-weight: 600; font-size: 14px;
+}
+.app-soon {
+  display: inline-block; padding: 8px 14px; border-radius: 8px;
+  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+}
+.app-card .cta-btn { padding: 8px 18px; }
+
+/* ── Privacy index, screenshots placeholder ─────────────── */
+.policy-list { list-style: none; margin: 16px 0 0 !important; }
+.policy-list li { padding: 12px 0; border-top: 1px solid var(--border); }
+.shots-placeholder {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 36px 20px; text-align: center; color: var(--muted);
+}
+
+/* ── Phones and small tablets ───────────────────────────── */
+@media (max-width: 640px) {
+  .site-bar { padding: 8px 16px; }
+  .brand span { font-size: 16px; }
+  main { padding: 24px 16px 40px; }
+  section { padding: 20px 18px; border-radius: 14px; }
+  .app-hero, .studio-hero { padding: 40px 16px 32px; }
+  .app-hero h1, .studio-hero h1 { font-size: 34px; }
+  .app-hero p, .studio-hero p { font-size: 17px; }
+  .hero { padding: 0 16px 24px; }
+  .page-nav a { margin: 2px 8px; }
+}
+
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Sari la conținut</a>
+<header class="site-header">
+  <div class="site-bar">
+    <a class="brand" href="../../index.html">
+      <img src="../../images/jini_logo.jpg" alt="" width="49" height="32">
+      <span>Jini Solutions</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../../index.html#apps">Aplicații</a>
+      <a href="../../index.html#contact">Contact</a>
+      <a href="../../privacy/index.html" aria-current="page">Confidențialitate</a>
+    </nav>
+  </div>
+</header>
+
+<div class="app-hero app-hero--slim">
+  <p class="eyebrow">Day OK<span class="dot">.</span></p>
+</div>
+
+<nav class="page-nav" aria-label="Day OK">
+  <a href="../index_ro.html">Day OK</a>
+  <a href="index_ro.html" aria-current="page">Confidențialitate</a>
+  <a href="index.html" hreflang="en" lang="en">English</a>
+</nav>
+
+<main id="main">
+<section class="prose" id="ro" lang="ro">
+
+  <h1>Politica de confidențialitate</h1>
+  <p class="subtitle">Data intrării în vigoare: 2026-10-21 &middot; pentru
+    aplicația Android de pe Google Play (Android TV, Google TV, tablete și
+    telefoane) &middot; <a href="index.html" hreflang="en" lang="en">English</a></p>
+
+  <p>
+    Day OK („aplicația”) este o aplicație de calendar și ceas pentru Android TV,
+    Google TV, tablete și telefoane, publicată pe Google Play de Jini Solutions
+    („noi”). Această pagină explică ce face aplicația cu informațiile tale. Pe
+    scurt: <strong>aplicația nu colectează nimic, nu trimite nimic și nu
+    partajează nimic.</strong> Tot ce citește sau păstrează rămâne pe
+    dispozitivul tău.
+  </p>
+
+  <h2>Operatorul de date</h2>
+  <p>
+    Operatorul de date responsabil pentru această aplicație este:<br>
+    <strong>Jini Solutions</strong><br>
+    Un studio independent condus de un singur dezvoltator, care este operatorul de date, ca persoană fizică<br>
+    București, România<br>
+    Contact: <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+  </p>
+
+  <h2>Fără acces la internet</h2>
+  <p>
+    Aplicația nu are permisiunea Android de acces la internet, deci nu se poate
+    conecta la internet și nu poate trimite date în afara dispozitivului.
+    Calendarele ajung pe dispozitiv prin sincronizarea proprie a dispozitivului
+    (de exemplu sincronizarea contului Google), ca pentru orice aplicație de
+    calendar; aplicația doar citește ce există deja pe dispozitiv.
+  </p>
+
+  <h2>Calendarele tale</h2>
+  <p>
+    Cu permisiunea ta (permisiunea de calendar a Android, cerută la prima
+    pornire), aplicația citește calendarele și evenimentele de pe dispozitiv și
+    le afișează pe ecran. Tu alegi ce calendare apar.
+  </p>
+  <ul>
+    <li>Aplicația <strong>nu adaugă, nu modifică și nu șterge niciodată
+        evenimente</strong>.</li>
+    <li>Singura modificare pe care o poate face calendarelor este cea pe care o
+        ceri tu: dacă apeși <em>Pornește sincronizarea</em> la un calendar marcat
+        „Nesincronizat”, aplicația pornește sincronizarea acelui calendar în
+        setările de calendar ale dispozitivului. Permisiunea necesară pentru
+        asta este cerută abia la prima apăsare a butonului.</li>
+    <li>Ca să arate imediat tabloul la pornire, aplicația păstrează o copie a
+        evenimentelor din ultima încărcare (ora, titlul, culorile și calendarul;
+        niciodată locul, descrierea sau participanții) și numărul lunar de
+        evenimente din vederea anului, într-un <strong>singur fișier criptat, în
+        spațiul privat al aplicației</strong> de pe dispozitiv. Fișierul este
+        criptat cu o cheie păstrată în depozitul securizat de chei al Android,
+        care nu poate fi exportată. Copia este înlocuită la fiecare încărcare și
+        ștearsă când retragi permisiunea de calendar sau deselectezi toate
+        calendarele.</li>
+  </ul>
+  <p>
+    Poți retrage oricând permisiunea de calendar din setările dispozitivului
+    (<em>Setări &rsaquo; Aplicații &rsaquo; Day OK &rsaquo; Permisiuni</em>).
+  </p>
+
+  <h2>Calendarul demonstrativ</h2>
+  <p>
+    Dacă pornești <em>Calendar demonstrativ</em> (<em>Setări &rsaquo;
+    Calendare</em> în aplicație), aplicația adaugă câteva calendare inventate,
+    cu evenimente inventate, în limba aplicației, ca să poți încerca fiecare
+    vedere. Ele există doar în aplicație: <strong>nimic nu se scrie în
+    calendarele tale</strong>, nimic nu se sincronizează și nimic nu se
+    trimite nicăieri. Când îl oprești, dispar.
+  </p>
+
+  <h2>Setări păstrate pe dispozitiv</h2>
+  <p>
+    Alegerile tale (ce calendare apar, limba, formatul ceasului, tema, fundalul,
+    orele în care ecranul rămâne pornit și altele asemenea) sunt păstrate în
+    spațiul privat al aplicației, pe dispozitiv. Dacă dai un nume uneia dintre
+    culorile proprii ale evenimentelor, numele și identificatorii evenimentelor
+    care o poartă (doar numere, niciodată titluri) sunt păstrate tot acolo.
+    Nimic din toate acestea nu părăsește dispozitivul.
+  </p>
+  <p>
+    Aplicația este exclusă din backupul în cloud al Android și din transferul
+    între dispozitive, deci nici setările, nici copia criptată nu sunt încărcate
+    într-un backup. Dezinstalarea aplicației sau ștergerea datelor ei
+    (<em>Setări &rsaquo; Aplicații &rsaquo; Day OK &rsaquo; Stocare &rsaquo; Șterge datele</em>) șterge tot ce a păstrat aplicația.
+  </p>
+
+  <h2>Alte permisiuni</h2>
+  <ul>
+    <li><strong>Starea sincronizării</strong> (citirea setărilor și a
+        statisticilor de sincronizare): ca să arate dacă sincronizarea
+        calendarului este pornită și când a rulat ultima dată.</li>
+    <li><strong>Starea rețelei</strong>: ca să arate „Nu pot sincroniza” cât timp
+        dispozitivul este offline. Citește doar dacă dispozitivul este conectat;
+        nu îi dă aplicației acces la internet.</li>
+    <li><strong>Menținerea ecranului activ</strong>: ca ecranul să rămână pornit
+        în orele alese de tine.</li>
+  </ul>
+
+  <h2>Fără reclame, statistici, urmărire sau raportare a erorilor</h2>
+  <p>
+    Aplicația nu conține reclame, instrumente de statistică sau de urmărire și
+    niciun software terț care colectează date. Nu are cont și nici
+    autentificare. Dacă apare o eroare, aplicația numără doar tipul erorii, în
+    memorie, ca să îl arate pe pagina ei de Diagnostic; nimic nu se scrie pe
+    disc și nimic nu se trimite.
+  </p>
+
+  <h2>Cumpărarea aplicației</h2>
+  <p>
+    Cumperi aplicația de pe Google Play, la un singur preț, cu totul inclus:
+    <strong>nu există achiziții în aplicație</strong>. Google procesează plata conform
+    <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">propriei politici de confidențialitate</a>. Google le oferă
+    dezvoltatorilor informații limitate despre comandă, cum ar fi numărul
+    comenzii, țara și prețul, pe care le folosim doar pentru contabilitate, taxe
+    și rambursări, așa cum cere legea. Pe Google Play, aplicația respectă
+    <a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener" target="_blank">politica Google Play privind datele utilizatorilor</a>.
+  </p>
+  <p>
+    Android și Google Play pot colecta date tehnice despre aplicațiile de pe
+    dispozitiv (de exemplu statistici despre erori și performanță, dacă ai
+    permis trimiterea datelor de utilizare și diagnosticare). Acest lucru îl
+    face Google, conform politicilor Google, nu aplicația.
+  </p>
+
+  <h2>Dacă ne scrii</h2>
+  <p>
+    Pagina <em>Contact și sugestii</em> a aplicației (<em>Setări &rsaquo;
+    Despre</em> și la finalul Ajutorului) poate pregăti un e-mail către <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    Nu îl trimite: deschide <strong>propria ta aplicație de e-mail</strong> cu
+    mesajul completat și nu se trimite nimic dacă nu apeși tu Trimite acolo.
+    Poți și să copiezi adresa sau să scanezi cu telefonul codul QR de pe pagină.
+  </p>
+  <p>
+    Înainte să trimiți, pagina arată exact ce conține mesajul pregătit și poți
+    debifa oricare dintre aceste detalii opționale:
+  </p>
+  <ul>
+    <li>setările aplicației (doar valorile, niciodată numele calendarelor,
+        titlurile evenimentelor sau numele date culorilor)</li>
+    <li>numele, producătorul și modelul dispozitivului</li>
+    <li>versiunea Android</li>
+    <li>versiunea aplicației</li>
+    <li>limba și setările regionale</li>
+  </ul>
+  <p>
+    Ne ajută să răspundem la întrebări despre un anumit televizor sau telefon.
+  </p>
+  <p>
+    Când ne trimiți un e-mail, primim adresa ta de e-mail și conținutul
+    mesajului, le folosim doar ca să îți răspundem și să reparăm problemele
+    semnalate (interesul nostru legitim de a-ți răspunde,
+    <a href="https://gdpr-info.eu/art-6-gdpr/" rel="noopener" target="_blank">RGPD art. 6 alin. (1) lit. f)</a>), nu le partajăm și ștergem
+    corespondența când nu mai este necesară (cel mult doi ani după ultimul
+    mesaj), cu excepția cazului în care legea ne obligă să o păstrăm mai mult.
+    Mesajul ajunge la noi prin serviciul de redirecționare a e-mailului
+    jini.solutions și este păstrat în căsuța de e-mail a operatorului.
+    Furnizorul tău de e-mail tratează mesajul conform propriei politici de
+    confidențialitate.
+  </p>
+  <p>
+    Pagina <em>Link de descărcare</em> a aplicației arată doar adresa aplicației
+    pe Google Play, ca text și ca cod QR; aplicația nu deschide și nu trimite
+    nimic.
+  </p>
+
+  <h2>Copiii</h2>
+  <p>
+    Aplicația nu se adresează copiilor. Nu colectează informații personale de la
+    nimeni, inclusiv de la copiii sub 13 ani (standardul stabilit în Statele
+    Unite de
+    <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312" rel="noopener" target="_blank">Children's Online Privacy Protection Rule, 16 CFR Part 312</a>)
+    sau sub vârsta stabilită de legea țării tale.
+  </p>
+
+  <h2>Păstrarea datelor</h2>
+  <p>
+    Pentru că aplicația nu colectează date personale, nu avem nimic de păstrat,
+    cu excepția unui e-mail pe care alegi să ni-l trimiți (vezi mai sus). Ce
+    păstrează aplicația pe dispozitiv se șterge când o dezinstalezi sau îi
+    ștergi datele.
+  </p>
+
+  <h2>Drepturile tale conform RGPD (UE, SEE și Regatul Unit)</h2>
+  <p>
+    Aceste drepturi vin din
+    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679" rel="noopener" target="_blank">Regulamentul general privind protecția datelor (UE) 2016/679</a>;
+    în Regatul Unit, UK GDPR păstrează aceleași drepturi. Pentru că aplicația
+    păstrează totul pe dispozitivul tău și noi nu avem nicio copie, pe cele mai
+    multe le poți exercita singur, imediat, fără să ne ceri nimic:
+  </p>
+  <ul>
+    <li><strong>Șterge tot ce știe aplicația:</strong> dezinstaleaz-o sau
+        șterge-i datele (<em>Setări &rsaquo; Aplicații &rsaquo; Day OK &rsaquo; Stocare &rsaquo; Șterge datele</em>). La noi nu rămâne nimic, pentru că
+        nimic nu a ajuns vreodată la noi.</li>
+    <li><strong>Oprește citirea calendarelor:</strong> retrage permisiunea de
+        calendar din setările dispozitivului sau deselectează calendarele în
+        aplicație.</li>
+    <li><strong>Dacă ne-ai scris:</strong> mesajul tău și ce ai atașat sunt
+        singurele date pe care le deținem. Răspunde la acel e-mail și cere-ne o
+        copie, o corectură sau ștergerea conversației.</li>
+  </ul>
+  <table class="rights">
+    <thead>
+      <tr><th>Dreptul</th><th>Ce înseamnă</th><th>Ce faci</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Acces</strong><br><span class="art"><a href="https://gdpr-info.eu/art-15-gdpr/" rel="noopener" target="_blank">Art. 15</a></span></td>
+        <td>Să afli dacă deținem date despre tine și să primești o copie.</td>
+        <td>Datele aplicației: sunt toate pe dispozitivul tău, iar aplicația nu ne trimite nimic din ele. Un e-mail trimis de tine: cere-ne o copie a corespondenței.</td>
+      </tr>
+      <tr>
+        <td><strong>Rectificare</strong><br><span class="art"><a href="https://gdpr-info.eu/art-16-gdpr/" rel="noopener" target="_blank">Art. 16</a></span></td>
+        <td>Să ceri corectarea datelor inexacte.</td>
+        <td>Datele aplicației: modifică-le în Setările aplicației. Datele din e-mail: răspunde-ne cu corectura.</td>
+      </tr>
+      <tr>
+        <td><strong>Ștergere</strong><br><span class="art"><a href="https://gdpr-info.eu/art-17-gdpr/" rel="noopener" target="_blank">Art. 17</a></span></td>
+        <td>Să ceri ștergerea datelor.</td>
+        <td>Datele aplicației: dezinstalează aplicația sau folosește <em>Setări &rsaquo; Aplicații &rsaquo; Day OK &rsaquo; Stocare &rsaquo; Șterge datele</em>. Datele din e-mail: răspunde-ne și cere ștergerea conversației.</td>
+      </tr>
+      <tr>
+        <td><strong>Restricționare</strong><br><span class="art"><a href="https://gdpr-info.eu/art-18-gdpr/" rel="noopener" target="_blank">Art. 18</a></span></td>
+        <td>Să suspenzi folosirea datelor cât timp se lămurește o neînțelegere.</td>
+        <td>Răspunde la e-mailul tău și cere asta; nu mai folosim conversația până la lămurire.</td>
+      </tr>
+      <tr>
+        <td><strong>Portabilitate</strong><br><span class="art"><a href="https://gdpr-info.eu/art-20-gdpr/" rel="noopener" target="_blank">Art. 20</a></span></td>
+        <td>Să primești datele într-un format care poate fi citit automat.</td>
+        <td>Datele aplicației nu ajung niciodată la noi, deci nu avem ce exporta. Datele din e-mail se află deja în conversația ta.</td>
+      </tr>
+      <tr>
+        <td><strong>Opoziție</strong><br><span class="art"><a href="https://gdpr-info.eu/art-21-gdpr/" rel="noopener" target="_blank">Art. 21</a></span></td>
+        <td>Să te opui prelucrării bazate pe interesul legitim.</td>
+        <td>Singura prelucrare de partea noastră este răspunsul la e-mailurile pe care ni le trimiți. Răspunde-ne că te opui; ne oprim și ștergem conversația.</td>
+      </tr>
+      <tr>
+        <td><strong>Plângere</strong><br><span class="art"><a href="https://gdpr-info.eu/art-77-gdpr/" rel="noopener" target="_blank">Art. 77</a></span></td>
+        <td>Să depui o plângere la o autoritate de supraveghere.</td>
+        <td>România: <a href="https://www.dataprotection.ro" rel="noopener" target="_blank">Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</a>. În altă țară din UE/SEE, autoritatea națională; în Regatul Unit, ICO.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Cum tratăm cererile primite prin e-mail.</strong> Scrie-ne la
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>. Confirmăm primirea în cel mult 5 zile lucrătoare și răspundem în cel
+    mult 30 de zile calendaristice (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">art. 12 alin. (3)</a>). Putem să îți
+    cerem să confirmi că ești persoana la care se referă cererea. Pentru datele
+    pe care Google le deține despre cumpărătura ta sau despre contul tău Google,
+    folosește direct <a href="https://myaccount.google.com/data-and-privacy" rel="noopener" target="_blank">Google Date și confidențialitate</a>.
+  </p>
+  <p>
+    <strong>Cereri pe care le putem refuza.</strong> Conform
+    <a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">art. 12 alin. (5)</a>, putem refuza să dăm curs unei cereri vădit
+    nefondate sau excesive, în special pentru că repetă una anterioară, sau
+    putem percepe pentru ea o taxă rezonabilă. Nu răspundem mesajelor abuzive,
+    amenințătoare sau fără legătură cu această aplicație. Când refuzăm o cerere,
+    îți spunem că o refuzăm, de ce, și că poți depune o plângere la autoritatea
+    de supraveghere numită mai sus sau te poți adresa justiției
+    (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">art. 12 alin. (4)</a>). Dacă mesajele unui expeditor îndeplinesc
+    criteriile art. 12 alin. (5), ne rezervăm dreptul să blocăm comunicarea
+    ulterioară cu acel expeditor, de exemplu adăugând adresa lui în filtrul de
+    spam; o cerere reală trimisă ulterior de la altă adresă este tratată în
+    continuare conform acestei politici.
+  </p>
+
+  <h2>Drepturile tale conform CCPA (California)</h2>
+  <p>
+    Aplicația nu colectează informații personale, iar noi nu vindem și nu
+    partajăm informații personale
+    (<a href="https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&amp;part=4.&amp;lawCode=CIV&amp;title=1.81.5" rel="noopener" target="_blank">Cal. Civ. Code §1798.100 et seq.</a>). Un e-mail pe care ni-l
+    trimiți este folosit doar ca să îți răspundem.
+  </p>
+
+  <h2>Modificări ale acestei politici</h2>
+  <p>
+    Dacă aplicația își schimbă vreodată modul în care tratează datele, vom
+    actualiza această pagină înainte de lansarea acelei versiuni și vom schimba
+    data intrării în vigoare de mai sus. O schimbare prin care date ar părăsi
+    dispozitivul ar fi descrisă și în pagina aplicației din magazin.
+  </p>
+
+  <h2>Contact și cereri privind datele personale</h2>
+  <p>
+    Pentru întrebări despre confidențialitate, cereri privind datele personale
+    (acces, rectificare, ștergere) sau orice altă întrebare despre Day OK,
+    scrie-i operatorului de date la:
+  </p>
+  <p>
+    <strong>Jini Solutions</strong><br>
+    București, România<br>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+  </p>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <p>
+    <a href="../../index.html#apps">Aplicații</a>
+    <span class="sep">|</span>
+    <a href="../../privacy/index.html">Confidențialitate</a>
+    <span class="sep">|</span>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    <span class="sep">|</span>
+    <span class="nowrap">&copy; 2026 Jini Solutions</span>
+  </p>
+</footer>
+
+</body>
+</html>

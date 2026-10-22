@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy for Amethyst</title>
+  <meta name="description"
+        content="How Amethyst handles your data.">
+  <link rel="canonical" href="https://jini.solutions/amethyst/privacy_policy.html">
+  <style>
+/* Palette, derived from the Jini logo:
+   dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
+:root {
+  --dark:   #1F2937;
+  --green:  #00D95F;
+  --green2: #00B84E;   /* hover / pressed */
+  --bg:     #F8FAFC;
+  --white:  #FFFFFF;
+  --border: #E5E7EB;
+  --muted:  #6B7280;
+  --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+}
+a { color: var(--dark); text-decoration: none; }
+/* Links inside running text are visible without hovering (2026-09-18):
+   the legal frameworks on the privacy page, the studio name on Contact. */
+.prose a, #contact a, #about a, #privacy a, .section-link a {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ── Skip link and the shared site header (2026-10-21) ─── */
+.skip {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  background: var(--white); color: var(--dark); font-weight: 700;
+  padding: 8px 14px; border-radius: 6px;
+}
+.skip:focus { top: 8px; }
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-bar {
+  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.brand img { height: 32px; width: auto; border-radius: 6px; }
+.site-nav { display: flex; gap: 4px 20px; flex-wrap: wrap; }
+.site-nav a {
+  font-weight: 600; font-size: 15px; padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ── Header ────────────────────────────────────────────── */
+.app-hero, .studio-hero {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 72px 24px 56px;
+}
+.app-hero h1, .studio-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+/* Green dot accent: mirrors the logo dots */
+.app-hero span.dot, .studio-hero span.dot { color: var(--green); }
+.app-hero p, .studio-hero p {
+  font-size: 20px;
+  margin-top: 12px;
+  color: rgba(255,255,255,0.75);
+}
+.cta-row { margin-top: 28px; }
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--green2); text-decoration: none; }
+.cta-soon {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  padding: 11px 24px;
+  border-radius: 6px;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+.page-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  text-align: center;
+}
+.page-nav a {
+  display: inline-block;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 2px 12px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.page-nav a:hover, .page-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+
+/* ── Main / Sections ────────────────────────────────────── */
+main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+}
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+/* Green left rule on h2 */
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Stats grid ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-card .number {
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--green2);
+  letter-spacing: -1px;
+}
+.stat-card .label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ── Theme list ─────────────────────────────────────────── */
+.theme-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.theme-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.theme-list li .theme-name { font-weight: 600; }
+.theme-list li .puzzle-count {
+  background: #E6F9EE;
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ── Language badges ────────────────────────────────────── */
+.lang-label { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.lang-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.lang-badge {
+  background: var(--dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* ── Features list ──────────────────────────────────────── */
+.features { list-style: none; }
+.features li {
+  padding: 6px 0 6px 24px;
+  position: relative;
+  font-size: 15px;
+  color: #374151;
+  border-bottom: 1px solid var(--border);
+}
+.features li:last-child { border-bottom: none; }
+.features li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* ── Contact: the app's Contact page (2026-09-18) ───────── */
+.contact-logo {
+  display: block;
+  height: 72px; width: auto;
+  margin: 4px auto 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-blurb { text-align: center; }
+#contact h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 16px 0 4px;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--dark); }
+footer .sep { margin: 0 10px; opacity: 0.4; }
+.nowrap { white-space: nowrap; }
+
+/* ── Privacy prose ──────────────────────────────────────── */
+.prose { font-size: 15px; color: #374151; }
+.prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.prose h2 {
+  font-size: 16px; font-weight: 700; color: var(--dark);
+  margin: 24px 0 8px;
+}
+.prose h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 1em;
+  background: var(--green);
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative; top: -1px;
+}
+.prose p  { margin-bottom: 10px; }
+.prose ul { margin: 6px 0 12px 20px; }
+.prose ul li { margin-bottom: 4px; }
+/* ── Store badges / platforms line (2026-09-17) ─────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+
+/* ── Hero: the Play feature graphic under the header ────── */
+.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero img {
+  max-width: 900px; width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Screenshot gallery: six phone captures, scroll-snap ─── */
+.shots {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  flex: 0 0 auto; scroll-snap-align: start;
+  width: 180px; margin: 0; text-align: center;
+}
+.shot img {
+  width: 100%; height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.10);
+  background: #000;
+}
+.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+@media (min-width: 900px) {
+  .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
+  .shot { width: calc((100% - 5 * 14px) / 6); }
+}
+
+/* ── Rights table on the privacy page ───────────────────── */
+.prose table.rights {
+  width: 100%; border-collapse: collapse;
+  margin: 12px 0 16px; font-size: 14px;
+}
+.prose table.rights th, .prose table.rights td {
+  border: 1px solid var(--border); padding: 8px 10px;
+  vertical-align: top; text-align: left;
+}
+.prose table.rights th {
+  background: var(--bg); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.prose table.rights td:first-child { white-space: nowrap; }
+.prose table.rights .art { font-size: 12px; color: var(--muted); }
+.prose table.rights .art a { color: var(--link); }
+@media (max-width: 640px) {
+  .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
+  .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
+  .prose table.rights thead { display: none; }
+  .prose table.rights tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    margin-bottom: 10px; padding: 6px 0;
+  }
+  .prose table.rights td { border: none; padding: 4px 12px; white-space: normal; }
+  .prose table.rights td:first-child { white-space: normal; }
+}
+
+/* ── Click to enlarge: the zoom links and the lightbox ─────── */
+a.zoom { display: block; cursor: zoom-in; }
+a.zoom:hover { text-decoration: none; }
+a.zoom img { transition: transform 0.15s; }
+a.zoom:hover img { transform: scale(1.02); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(15,23,42,0.92);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 64px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 120px);
+  border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  cursor: zoom-out; background: #000;
+}
+.lightbox button {
+  position: absolute; border: none; background: rgba(255,255,255,0.12);
+  color: var(--white); font-size: 28px; line-height: 1;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+}
+.lightbox button:hover { background: rgba(255,255,255,0.25); }
+.lightbox .lb-close { top: 16px; right: 16px; }
+.lightbox .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-caption {
+  position: absolute; left: 0; right: 0; bottom: 14px;
+  text-align: center; color: rgba(255,255,255,0.75); font-size: 13px;
+  padding: 0 64px; margin: 0;
+}
+@media (max-width: 640px) {
+  .lightbox { padding: 56px 8px 40px; }
+  .lightbox img { max-height: calc(100vh - 100px); }
+}
+
+/* ── Slim heroes (privacy pages) and the studio hero ────── */
+.app-hero--slim, .studio-hero--slim { padding: 22px 24px; }
+.app-hero p.eyebrow, .studio-hero p.eyebrow {
+  font-size: 22px; font-weight: 800; color: var(--white); margin: 0;
+}
+.page-title { font-size: 26px; margin-bottom: 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.updated { margin-top: 6px; font-size: 12px; }
+
+/* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
+main.wide { max-width: 1080px; }
+.app-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+}
+.app-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  border-top: 5px solid var(--accent, var(--green));
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.app-card p { margin: 0; }
+.app-head { display: flex; gap: 14px; align-items: center; }
+.app-icon {
+  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--white);
+}
+.app-monogram {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--dark)); color: var(--white);
+  font-weight: 800; font-size: 22px; letter-spacing: 0.5px; border: none;
+}
+.app-card h3 { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.app-card h3 a { color: var(--dark); }
+.app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
+.badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.badges li {
+  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
+}
+.app-links {
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  margin-top: auto !important; padding-top: 6px;
+}
+.app-links a:not(.cta-btn) {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+  font-weight: 600; font-size: 14px;
+}
+.app-soon {
+  display: inline-block; padding: 8px 14px; border-radius: 8px;
+  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+}
+.app-card .cta-btn { padding: 8px 18px; }
+
+/* ── Privacy index, screenshots placeholder ─────────────── */
+.policy-list { list-style: none; margin: 16px 0 0 !important; }
+.policy-list li { padding: 12px 0; border-top: 1px solid var(--border); }
+.shots-placeholder {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 36px 20px; text-align: center; color: var(--muted);
+}
+
+/* ── Phones and small tablets ───────────────────────────── */
+@media (max-width: 640px) {
+  .site-bar { padding: 8px 16px; }
+  .brand span { font-size: 16px; }
+  main { padding: 24px 16px 40px; }
+  section { padding: 20px 18px; border-radius: 14px; }
+  .app-hero, .studio-hero { padding: 40px 16px 32px; }
+  .app-hero h1, .studio-hero h1 { font-size: 34px; }
+  .app-hero p, .studio-hero p { font-size: 17px; }
+  .hero { padding: 0 16px 24px; }
+  .page-nav a { margin: 2px 8px; }
+}
+
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-bar">
+    <a class="brand" href="../index.html">
+      <img src="../images/jini_logo.jpg" alt="" width="49" height="32">
+      <span>Jini Solutions</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="../privacy/index.html" aria-current="page">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="app-hero app-hero--slim">
+  <p class="eyebrow">Amethyst<span class="dot">.</span></p>
+</div>
+
+<nav class="page-nav" aria-label="Amethyst">
+  <a href="../amethyst/index.html">Amethyst</a>
+  <a href="../amethyst/index.html#contact">Contact</a>
+  <a href="../amethyst/privacy_policy.html" aria-current="page">Privacy</a>
+</nav>
+
+<main id="main">
+<section class="prose">
+
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">Last updated: 2026-10-22 &middot; applies to the
+    Android app (Google Play) and the iOS app (App Store)</p>
+
+  <p>
+    Amethyst ("we", "our", "the app") is a free word-puzzle game.
+    This page explains what data is collected when you use the app and how it is used.
+    The same app, with the same privacy behaviour, is published for Android on
+    Google Play and for iPhone and iPad on the App Store; where the two
+    platforms differ, this page says so.
+  </p>
+
+  <h2>Data controller</h2>
+  <p>
+    The data controller responsible for this app is:<br>
+    <strong>Jini Solutions</strong><br>
+    An independent studio run by a sole developer, who is the data controller as a natural person<br>
+    Bucharest, Romania<br>
+    Contact: <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+  </p>
+
+  <h2>Information we collect</h2>
+  <p>
+    <strong>We do not collect any personal information directly.</strong>
+    The app does not require an account, does not ask for your name, email
+    address, or any other identifying information, and does not transmit any
+    gameplay data to our servers.
+  </p>
+  <p>
+    All progress (completed puzzles, settings, hint counts, your declared age
+    band) is stored on your device (in the app's private local storage on
+    Android, in the app's sandbox on iOS) and is never sent to us. On Android
+    it is also part of your own Google device backup, if you have backup
+    turned on, so a reinstall or a new phone gets your progress back; that
+    copy is held by Google under your account, and we cannot see it.
+    Uninstalling the app removes the copy on your device; so does
+    <em>Settings &rarr; Delete all local data</em> inside the app. The backup
+    copy follows your Google backup settings.
+  </p>
+
+  <p>
+    <strong>Voluntary defect reporting.</strong> If you choose to report a
+    technical issue, you may send an email to <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    To help us investigate and resolve the issue, we recommend including
+    some or all of the following; the choice of what to share is entirely
+    yours:
+  </p>
+  <ul>
+    <li>Phone model</li>
+    <li>Phone operating system version (Android or iOS)</li>
+    <li>Your Amethyst version and in-app settings</li>
+    <li>Error logs captured by the app</li>
+    <li>Screenshots or screen recordings showing the malfunction</li>
+  </ul>
+  <p>
+    This information is used solely to diagnose and resolve the reported
+    defect. It reaches us through the jini.solutions mail forwarding
+    service and is kept in the controller's own mailbox; it is not
+    shared with any third party. You may request deletion of the email
+    thread at any time by replying to it;
+    please be aware that deletion is carried out immediately upon request
+    but will permanently remove the correspondence and may prevent us from
+    completing the investigation.
+  </p>
+
+  <h2>Advertising (Google AdMob)</h2>
+  <p>
+    The app displays advertisements served by <strong>Google AdMob</strong>,
+    a third-party advertising network operated by Google LLC, on both
+    platforms: one small banner, and a rewarded video you choose to watch.
+    AdMob may collect and use data to serve personalised or non-personalised
+    ads, including:
+  </p>
+  <ul>
+    <li>Device identifiers: the Advertising ID (GAID) on Android; on iOS the
+        Identifier for Advertisers (IDFA), which AdMob can read only if you
+        have allowed tracking (see <em>Apple platform services</em> below)</li>
+    <li>IP address and approximate location</li>
+    <li>App usage and interaction data</li>
+    <li>Device model, OS version, language, and time zone</li>
+  </ul>
+  <p>
+    This data is collected and processed by Google under their own privacy
+    policy.  You can review it at
+    <a href="https://policies.google.com/privacy" rel="noopener"
+       target="_blank">policies.google.com/privacy</a>.
+    AdMob serves its ads under the <a href="https://support.google.com/admob/answer/6128543" rel="noopener" target="_blank">Google AdMob policies</a>;
+    on Google Play the app is also bound by the
+    <a href="https://support.google.com/googleplay/android-developer/answer/10144311" rel="noopener" target="_blank">Google Play User Data policy</a>.
+  </p>
+  <p>
+    <strong>Legal basis (EU/EEA/UK users):</strong> processing by AdMob is
+    based on your explicit consent (<a href="https://gdpr-info.eu/art-6-gdpr/" rel="noopener" target="_blank">GDPR Art. 6(1)(a)</a>).  On first
+    launch you will be shown a consent dialogue powered by Google's
+    <a href="https://support.google.com/admob/answer/10113207" rel="noopener" target="_blank">User Messaging Platform</a>, on Android and on iOS alike.  You can change or
+    withdraw your consent at any time from
+    <em>Top right corner &rarr; Manage ad consent</em>.
+  </p>
+  <p>
+    If you decline personalised advertising, the app will display
+    non-personalised ads instead and all features remain fully available.
+  </p>
+
+  <h2>Google platform services (Android)</h2>
+  <p>
+    On Android the app uses Google Play Services for standard functionality.
+    Google Play Services may collect certain device and usage information as
+    described in
+    <a href="https://policies.google.com/privacy" rel="noopener"
+       target="_blank">Google's Privacy Policy</a>.
+  </p>
+
+  <h2>Apple platform services (iOS)</h2>
+  <p>
+    On iPhone and iPad the app runs on Apple's platform services. Apple may
+    collect device and usage information as described in
+    <a href="https://www.apple.com/legal/privacy/" rel="noopener"
+       target="_blank">Apple's Privacy Policy</a>.
+    The app does <strong>not</strong> ask for permission to track you across
+    other companies' apps and websites (Apple's App Tracking Transparency
+    prompt is never shown), so the Identifier for Advertisers is not available
+    to AdMob unless you have allowed tracking for all apps in
+    <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>. You can also
+    turn off personalised ads from Apple in
+    <em>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising</em>.
+    The App Store listing carries the app's privacy "nutrition label"
+    (<a href="https://developer.apple.com/app-store/app-privacy-details/" rel="noopener" target="_blank">Apple's app privacy details</a>), which
+    summarises this page as the
+    <a href="https://developer.apple.com/app-store/review/guidelines/#privacy" rel="noopener" target="_blank">App Store Review Guidelines §5.1</a> require.
+  </p>
+
+  <h2>Children's privacy</h2>
+  <p>
+    The app is not directed at children under the age of 13.  We do not
+    knowingly collect personal information from children (the standard set by
+    the United States
+    <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312" rel="noopener" target="_blank">Children's Online Privacy Protection Rule, 16 CFR Part 312</a>).
+    On first launch the
+    app asks which age band you are in; a player who declares 17 or younger is
+    never shown the personalisation dialogue and receives non-personalised
+    ads only. That is also what Article 28 of the EU
+    <a href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj" rel="noopener" target="_blank">Digital Services Act</a> requires: no advertising based on
+    profiling to a player who has declared that they are a minor.
+    If you believe your child has provided personal information
+    through the app, please contact us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    and we will take prompt action to remove it.
+  </p>
+
+  <h2>Data retention</h2>
+  <p>
+    Because we do not collect personal data ourselves, there is no data
+    held by us to retain or delete.  Game progress stored on your device
+    is deleted when you uninstall the app or choose
+    <em>Settings &rarr; Delete all local data</em>; a copy in your Google
+    device backup is kept and removed according to your Google backup
+    settings.  For data held by Google
+    (AdMob / Play Services), refer to
+    <a href="https://policies.google.com/privacy" rel="noopener"
+       target="_blank">Google's data retention policies</a>; for data held by
+    Apple, to Apple's.
+  </p>
+
+  <h2>Your rights under the GDPR (EU, EEA and UK)</h2>
+  <p>
+    These rights come from the
+    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679" rel="noopener" target="_blank">General Data Protection Regulation (EU) 2016/679</a>.
+    <strong>United Kingdom:</strong> the UK GDPR keeps the same rights, and the
+    ICO's <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/" rel="noopener" target="_blank">Children's code</a> (the Age appropriate
+    design code) applies; the app's age band, and the rule that a declared
+    minor never receives personalised ads, are how the Code's standards are
+    met.
+  </p>
+  <p>
+    Because the app keeps everything on your device (and, on Android, in
+    your own Google backup) and we hold no copy, you
+    can exercise most rights yourself, at once, without asking us:
+  </p>
+  <ul>
+    <li><strong>Delete everything the app knows:</strong> uninstall the app, or
+        open <em>Settings &rarr; Delete all local data</em>. Both remove your
+        progress, settings, history and age band from the device; nothing
+        survives on our side, because nothing ever reached us. A copy in
+        your Google device backup is removed from your Google account's
+        backup settings.</li>
+    <li><strong>If you have emailed us:</strong> your message and anything you
+        attached is the only data we hold. Reply to that email and ask us to
+        delete the conversation. We delete it and stop working on it; that
+        ends the exchange.</li>
+    <li><strong>Advertising data</strong> (the advertising identifier, ad
+        interactions) is held by Google, not by us. Withdraw or limit consent
+        in the app at <em>Top right corner &rarr; Manage ad consent</em>; for
+        Google's own records use the request tool linked below.</li>
+  </ul>
+  <table class="rights">
+    <thead>
+      <tr><th>Right</th><th>What it means</th><th>What to do</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Access</strong><br><span class="art"><a href="https://gdpr-info.eu/art-15-gdpr/" rel="noopener" target="_blank">Art. 15</a></span></td>
+        <td>Know whether we hold data about you, and get a copy.</td>
+        <td>For app data: it is all on your device; the Settings page shows it. For an email you sent: you can keep a record of the thread.</td>
+      </tr>
+      <tr>
+        <td><strong>Rectification</strong><br><span class="art"><a href="https://gdpr-info.eu/art-16-gdpr/" rel="noopener" target="_blank">Art. 16</a></span></td>
+        <td>Have inaccurate data corrected.</td>
+        <td>App data: change it in the app. Email data: reply with the correction.</td>
+      </tr>
+      <tr>
+        <td><strong>Erasure</strong><br><span class="art"><a href="https://gdpr-info.eu/art-17-gdpr/" rel="noopener" target="_blank">Art. 17</a></span></td>
+        <td>Have your data deleted.</td>
+        <td>App data: uninstall, or <em>Settings &rarr; Delete all local data</em>. Email data: reply and ask us to delete the conversation. Google's ad data: withdraw consent in the app, and use Google's data-deletion tool.</td>
+      </tr>
+      <tr>
+        <td><strong>Restriction</strong><br><span class="art"><a href="https://gdpr-info.eu/art-18-gdpr/" rel="noopener" target="_blank">Art. 18</a></span></td>
+        <td>Pause the use of your data while a dispute is settled.</td>
+        <td>Reply to your email and ask; we stop using the thread until it is resolved.</td>
+      </tr>
+      <tr>
+        <td><strong>Portability</strong><br><span class="art"><a href="https://gdpr-info.eu/art-20-gdpr/" rel="noopener" target="_blank">Art. 20</a></span></td>
+        <td>Receive your data in a machine-readable form.</td>
+        <td>App data never reaches us, so there is nothing to export from us. Email data is already in the email conversation thread.</td>
+      </tr>
+      <tr>
+        <td><strong>Objection</strong><br><span class="art"><a href="https://gdpr-info.eu/art-21-gdpr/" rel="noopener" target="_blank">Art. 21</a></span></td>
+        <td>Object to processing based on legitimate interest, including profiling for ads.</td>
+        <td>Select non-personalised ads at <em>Top right corner &rarr; Manage ad consent</em>, or turn off ad personalisation in your device's settings.</td>
+      </tr>
+      <tr>
+        <td><strong>Withdraw consent</strong><br><span class="art"><a href="https://gdpr-info.eu/art-7-gdpr/" rel="noopener" target="_blank">Art. 7(3)</a></span></td>
+        <td>Take back the consent you gave for personalised ads, at any time.</td>
+        <td><em>Top right corner &rarr; Manage ad consent</em>. Withdrawal does not affect processing that happened before it.</td>
+      </tr>
+      <tr>
+        <td><strong>Complain</strong><br><span class="art"><a href="https://gdpr-info.eu/art-77-gdpr/" rel="noopener" target="_blank">Art. 77</a></span></td>
+        <td>Complain to a supervisory authority.</td>
+        <td>Romania: <a href="https://www.dataprotection.ro" rel="noopener" target="_blank">Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</a>. In another EU/EEA country, your national authority.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>How we handle requests by email.</strong> Write to <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    We acknowledge within 5 business days and answer within 30 calendar days
+    (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(3)</a>). We may ask you to confirm you are the person
+    the request concerns. Where a request concerns data held by Google, we
+    forward it using Google's
+    <a href="https://support.google.com/googleplay/android-developer/answer/10165528"
+       rel="noopener" target="_blank">User Data Deletion tools</a>; you can
+    also act directly in <a href="https://myaccount.google.com/data-and-privacy" rel="noopener" target="_blank">Google Data &amp; Privacy</a>.
+  </p>
+  <p>
+    <strong>Requests we may decline.</strong> Under <a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(5)</a> we
+    may refuse to act on, or charge a reasonable fee for, a request that is
+    manifestly unfounded or excessive, in particular because it repeats an
+    earlier one. We do not answer messages that are abusive, threatening, or
+    unrelated to this app. Where we refuse a request, we tell you that we are
+    refusing, why, and that you may complain to the supervisory authority
+    named above or seek a judicial remedy (<a href="https://gdpr-info.eu/art-12-gdpr/" rel="noopener" target="_blank">Art. 12(4)</a>). If a
+    sender's messages meet the Art. 12(5) criteria, we reserve the right to
+    block further communication from that sender, for example by adding the
+    sender's address to our spam filter; a genuine request sent afterwards
+    from another address is still handled under this policy.
+  </p>
+
+  <h2>Your rights under the CCPA (California)</h2>
+  <p>
+    California residents may opt out of the sharing of personal information
+    for cross-context behavioural advertising
+    (<a href="https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&amp;part=4.&amp;lawCode=CIV&amp;title=1.81.5" rel="noopener" target="_blank">Cal. Civ. Code §1798.100 et seq.</a>).  To do so:
+  </p>
+  <ul>
+    <li>Use the in-app consent control: <em>Top right corner &rarr;
+        Manage ad consent</em> (select non-personalised ads).</li>
+    <li>On Android, adjust your device-level ad preferences via
+        <em>Settings &rarr; Google &rarr; Ads</em>.</li>
+    <li>On iOS, use <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>
+        and <em>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising</em>.</li>
+    <li>Manage Google ad personalisation at
+        <a href="https://adssettings.google.com" rel="noopener"
+           target="_blank">adssettings.google.com</a>.</li>
+  </ul>
+  <p>
+    We do not discriminate against users who exercise their CCPA rights.
+    All app features are equally available regardless of ad consent choice.
+    How Google AdMob handles California residents' data is described on
+    <a href="https://support.google.com/admob/answer/9561891" rel="noopener" target="_blank">AdMob's California page</a>.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this Privacy Policy from time to time.  Any changes will
+    be posted on this page with an updated date.  Continued use of the app
+    after changes are posted constitutes acceptance of the updated policy.
+  </p>
+
+  <h2>Contact &amp; data subject requests</h2>
+  <p>
+    For privacy questions, data subject requests (access, erasure,
+    portability), or any other enquiry, contact the data controller at:
+  </p>
+  <p>
+    <strong>Jini Solutions</strong><br>
+    Bucharest, Romania<br>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+  </p>
+
+</section>
+</main>
+
+<footer class="site-footer">
+  <p>
+    <a href="../index.html#apps">Apps</a>
+    <span class="sep">|</span>
+    <a href="../privacy/index.html">Privacy</a>
+    <span class="sep">|</span>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    <span class="sep">|</span>
+    <span class="nowrap">&copy; 2026 Jini Solutions</span>
+  </p>
+</footer>
+
+</body>
+</html>
