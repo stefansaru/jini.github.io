@@ -6,6 +6,20 @@
   <title>Day OK: Un calendar și un ceas liniștite pentru televizor, tabletă și telefon</title>
   <meta name="description"
         content="Day OK: Un calendar și un ceas liniștite pentru televizor, tabletă și telefon. Day OK îți arată dintr-o privire ziua, săptămâna, luna și anul. Citește calendarele pe care dispozitivul tău le sincronizează deja și nu are acces propriu la internet. Fără reclame, fără cont, fără achiziții în aplicație: un singur preț, totul inclus.">
+  <meta name="theme-color" content="#0E1216">
+  <link rel="icon" href="../images/favicon-32.png">
+  <link rel="icon" href="../images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../images/favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jini Solutions">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:title" content="Day OK: Un calendar și un ceas liniștite pentru televizor, tabletă și telefon">
+  <meta property="og:description" content="Day OK: Un calendar și un ceas liniștite pentru televizor, tabletă și telefon. Day OK îți arată dintr-o privire ziua, săptămâna, luna și anul. Citește calendarele pe care dispozitivul tău le sincronizează deja și nu are acces propriu la internet. Fără reclame, fără cont, fără achiziții în aplicație: un singur preț, totul inclus.">
+  <meta property="og:url" content="https://jini.solutions/dayok/index_ro.html">
+  <meta property="og:image" content="https://jini.solutions/images/og/dayok.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jini.solutions/dayok/index_ro.html">
   <link rel="alternate" hreflang="en" href="https://jini.solutions/dayok/">
   <link rel="alternate" hreflang="ro" href="https://jini.solutions/dayok/index_ro.html">
@@ -20,12 +34,15 @@
   --bg:     #F8FAFC;
   --white:  #FFFFFF;
   --border: #E5E7EB;
-  --muted:  #6B7280;
+  --muted:  #475569;   /* 7.6:1 on white (was #6B7280, 4.6:1 on --bg) */
   --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+  --hero:   var(--dark); /* an app page sets its own hero and link colours */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font);
   background: var(--bg);
   color: var(--dark);
   line-height: 1.6;
@@ -53,7 +70,7 @@ img { max-width: 100%; }
   position: sticky; top: 0; z-index: 20;
 }
 .site-bar {
-  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  max-width: 1160px; margin: 0 auto; padding: 10px 24px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 8px 20px; flex-wrap: wrap;
 }
@@ -69,24 +86,29 @@ img { max-width: 100%; }
 }
 a:hover { text-decoration: underline; }
 
-/* ── Header ────────────────────────────────────────────── */
+/* ── Hero: the studio's charcoal, or the app's own colour ── */
 .app-hero, .studio-hero {
-  background: var(--dark);
+  background: var(--hero);
   color: var(--white);
   text-align: center;
   padding: 72px 24px 56px;
 }
 .app-hero h1, .studio-hero h1 {
-  font-size: 48px;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 /* Green dot accent: mirrors the logo dots */
 .app-hero span.dot, .studio-hero span.dot { color: var(--green); }
 .app-hero p, .studio-hero p {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 2vw, 1.3rem);
   margin-top: 12px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
+}
+/* Focus stays visible on the coloured heroes. */
+.app-hero a:focus-visible, .studio-hero a:focus-visible, .hero a:focus-visible {
+  outline-color: var(--white);
 }
 .cta-row { margin-top: 28px; }
 .cta-btn {
@@ -96,17 +118,17 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   font-size: 15px;
   padding: 12px 28px;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: background 0.15s;
 }
 .cta-btn:hover { background: var(--green2); text-decoration: none; }
 .cta-soon {
   display: inline-block;
-  border: 2px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.7);
-  font-size: 14px;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
   padding: 11px 24px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -131,35 +153,26 @@ a:hover { text-decoration: underline; }
 }
 
 /* ── Main / Sections ────────────────────────────────────── */
-main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+main { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+main:has(> section.prose) { max-width: 840px; }
 section {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 28px 32px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
 }
+/* Website v2: no green bar before every h2; the green is kept for the
+   full stop in the titles. */
 h2 {
-  font-size: 20px;
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--dark);
   margin-bottom: 16px;
 }
-/* Green left rule on h2 */
-h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 10px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-}
-p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p { margin-bottom: 12px; font-size: 1.0625rem; color: #374151; }
 p:last-child { margin-bottom: 0; }
 
 /* ── Stats grid ─────────────────────────────────────────── */
@@ -180,11 +193,11 @@ p:last-child { margin-bottom: 0; }
   display: block;
   font-size: 36px;
   font-weight: 800;
-  color: var(--green2);
+  color: var(--link);   /* 5.2:1 on --bg; the green read 2.5:1 (2026-10-24) */
   letter-spacing: -1px;
 }
 .stat-card .label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--muted);
   text-transform: uppercase;
@@ -236,9 +249,9 @@ p:last-child { margin-bottom: 0; }
 /* ── Features list ──────────────────────────────────────── */
 .features { list-style: none; }
 .features li {
-  padding: 6px 0 6px 24px;
+  padding: 8px 0 8px 24px;
   position: relative;
-  font-size: 15px;
+  font-size: 1.0625rem;
   color: #374151;
   border-bottom: 1px solid var(--border);
 }
@@ -252,7 +265,7 @@ p:last-child { margin-bottom: 0; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--link);
 }
 
 /* ── Contact: the app's Contact page (2026-09-18) ───────── */
@@ -281,25 +294,43 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--dark); }
 footer .sep { margin: 0 10px; opacity: 0.4; }
+footer .studio-line { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+/* ── How the app is paid for (website v2, 2026-10-24) ──── */
+.app-hero p.price-line {
+  font-size: 15px; font-weight: 700; margin-top: 16px;
+  color: rgba(255,255,255,0.9);
+}
+.app-price { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+/* ── Website v2 pages: app name over a slogan, wide galleries, FAQ ── */
+.app-hero p.app-name {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-size: 1.25rem; font-weight: 800; color: var(--white);
+}
+.app-hero p.app-name img { border-radius: 10px; }
+.shots.shots--wide {
+  display: grid; gap: 16px; overflow: visible;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+.shot.shot--wide { width: auto; }
+.shot.shot--wide img { border-radius: 10px; }
+.faq details { border-top: 1px solid var(--border); padding: 12px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.0625rem; }
+.faq details p { margin: 8px 0 0; }
+ul.features + p { margin-top: 14px; }
+.contact-block { text-align: center; }
+.contact-block h2 { text-align: left; }
 .nowrap { white-space: nowrap; }
 
 /* ── Privacy prose ──────────────────────────────────────── */
-.prose { font-size: 15px; color: #374151; }
+.prose { font-size: 1.0625rem; color: #374151; }
 .prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
 .prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
 .prose h2 {
-  font-size: 16px; font-weight: 700; color: var(--dark);
-  margin: 24px 0 8px;
-}
-.prose h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px; height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 8px;
-  vertical-align: middle;
-  position: relative; top: -1px;
+  font-size: 1.2rem; font-weight: 700; color: var(--dark);
+  margin: 28px 0 8px;
 }
 .prose p  { margin-bottom: 10px; }
 .prose ul { margin: 6px 0 12px 20px; }
@@ -309,7 +340,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
 
 /* ── Hero: the Play feature graphic under the header ────── */
-.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero { background: var(--hero); padding: 0 24px 40px; text-align: center; }
 .hero img {
   max-width: 900px; width: 100%; height: auto;
   border-radius: 18px;
@@ -334,7 +365,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   box-shadow: 0 8px 20px rgba(15,23,42,0.10);
   background: #000;
 }
-.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
 @media (min-width: 900px) {
   .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
   .shot { width: calc((100% - 5 * 14px) / 6); }
@@ -373,13 +404,14 @@ a.zoom { display: block; cursor: zoom-in; }
 a.zoom:hover { text-decoration: none; }
 a.zoom img { transition: transform 0.15s; }
 a.zoom:hover img { transform: scale(1.02); }
-.lightbox {
-  position: fixed; inset: 0; z-index: 100;
-  background: rgba(15,23,42,0.92);
-  display: flex; align-items: center; justify-content: center;
-  padding: 48px 64px;
+dialog.lightbox {
+  border: none; background: transparent; color: var(--white);
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  margin: 0; padding: 48px 64px;
 }
-.lightbox[hidden] { display: none; }
+dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+dialog.lightbox::backdrop { background: rgba(15,23,42,0.92); }
+dialog.lightbox :focus-visible { outline-color: var(--white); }
 .lightbox img {
   max-width: 100%; max-height: calc(100vh - 120px);
   border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -414,7 +446,7 @@ a.zoom:hover img { transform: scale(1.02); }
 .updated { margin-top: 6px; font-size: 12px; }
 
 /* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
-main.wide { max-width: 1080px; }
+main.wide { max-width: 1160px; }
 .app-grid {
   display: grid; gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -440,7 +472,7 @@ main.wide { max-width: 1080px; }
 .app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
 .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .badges li {
-  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
   background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
 }
 .app-links {
@@ -452,8 +484,8 @@ main.wide { max-width: 1080px; }
   font-weight: 600; font-size: 14px;
 }
 .app-soon {
-  display: inline-block; padding: 8px 14px; border-radius: 8px;
-  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+  display: inline-block; padding: 8px 14px; border-radius: 10px;
+  border: 1px dashed #9CA3AF; color: #374151; font-size: 14px; font-weight: 600;
 }
 .app-card .cta-btn { padding: 8px 18px; }
 
@@ -472,15 +504,18 @@ main.wide { max-width: 1080px; }
   main { padding: 24px 16px 40px; }
   section { padding: 20px 18px; border-radius: 14px; }
   .app-hero, .studio-hero { padding: 40px 16px 32px; }
-  .app-hero h1, .studio-hero h1 { font-size: 34px; }
-  .app-hero p, .studio-hero p { font-size: 17px; }
   .hero { padding: 0 16px 24px; }
   .page-nav a { margin: 2px 8px; }
+}
+/* ── Reduced motion (website v2) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  a.zoom:hover img { transform: none; }
 }
 
   </style>
 </head>
-<body>
+<body style="--hero:#0E1216;--link:#1D4ED8">
 
 <a class="skip" href="#main">Sari la conținut</a>
 <header class="site-header">
@@ -491,26 +526,31 @@ main.wide { max-width: 1080px; }
     </a>
     <nav class="site-nav" aria-label="Site">
       <a href="../index.html#apps" aria-current="page">Aplicații</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../contact/index.html">Despre și contact</a>
       <a href="../privacy/index.html">Confidențialitate</a>
     </nav>
   </div>
 </header>
 
-<div class="app-hero" style="--accent:#1D4ED8">
-  <h1>Day OK<span class="dot">.</span></h1>
+<div class="app-hero">
+  <p class="app-name"><img src="../images/apps/dayok.png" alt="" width="40" height="40"><span>Day OK</span></p>
+  <h1>Keep Calm and TV On<span class="dot">.</span></h1>
   <p>Un calendar și un ceas liniștite pentru televizor, tabletă și telefon.</p>
+  <p class="price-line">Plătești o singură dată · Fără reclame · Fără abonament · Fără cont</p>
   <div class="cta-row">
-    <span class="cta-soon">În curând pe Google Play</span>
+    <span class="cta-soon">Lansare planificată pe Google Play la sfârșitul lui noiembrie 2026</span>
   </div>
   <p class="platforms">Pentru Google TV și Android TV, pentru tablete și telefoane Android.</p>
 </div>
 
 <nav class="page-nav" aria-label="Day OK">
   <a href="#about">Despre</a>
-  <a href="#features">Funcții</a>
+  <a href="#setup">Configurare</a>
   <a href="#screenshots">Capturi de ecran</a>
-  <a href="privacy/index_ro.html">Confidențialitate</a>
+  <a href="#devices">Unde merge</a>
+  <a href="#features">Funcții</a>
+  <a href="#privacy">Confidențialitate</a>
+  <a href="#faq">Întrebări</a>
   <a href="index.html" hreflang="en" lang="en">English</a>
 </nav>
 
@@ -521,18 +561,120 @@ main.wide { max-width: 1080px; }
     <p>
       Un calendar și un ceas liniștite pentru televizorul din sufragerie,
       pentru tabletă sau pentru telefon. Day OK îți arată următoarele trei
-      zile, săptămâna, luna și anul din Google Calendar, care e deja pe
+      zile, săptămâna, luna și anul din calendarele care sunt deja pe
       dispozitivul tău, cu litere mari, pe care le citești și de pe canapea.
     </p>
     <p>
-      Aplicația îți citește calendarul și nu îți schimbă niciodată
-      evenimentele: nu poate adăuga, modifica sau șterge niciunul. Nu are
-      prognoza meteo, știri, fotografii sau reclame. Nu îți faci cont și nu introduci
-      nicio parolă: calendarele se sincronizează prin dispozitiv, ca până acum.
+      Este un mod mai inteligent și mai frumos de a-ți vedea Google Calendar.
+      Merge cu calendarele pe care le ai deja și nu îți schimbă niciodată
+      evenimentele: le modifici în continuare ca de obicei, pe telefon sau pe
+      calculator, iar schimbările apar aici după următoarea sincronizare.
+      Dacă vrei să le poți modifica și pe
+      televizor, trimite-ne o cerere din <em>Setări &rsaquo; Despre &rsaquo;
+      Contact și sugestii</em>.
+    </p>
+    <p>
+      Nu are prognoza meteo, știri, fotografii sau reclame. Nu îți faci cont și
+      nu introduci nicio parolă: calendarele se sincronizează prin dispozitiv,
+      ca până acum.
     </p>
     <p>
       Plătești o singură dată. Fără abonament, fără achiziții în aplicație,
       nimic de deblocat.
+    </p>
+  </section>
+
+  <section id="setup">
+    <h2>Configurare în pași simpli</h2>
+    <p>
+      Configurarea durează doar o clipă, iar fiecare pas are un
+      <strong>?</strong> care îl explică în cuvinte simple.
+    </p>
+    <ul class="features">
+      <li>Instalezi Day OK din Google Play pe televizor, tabletă sau telefon.</li>
+      <li>Permiți accesul la calendar: Day OK citește calendarele pe care
+        dispozitivul le sincronizează deja și nu trimite nimic nicăieri.</li>
+      <li>Alegi ce calendare să apară.</li>
+      <li>Spui unde e ecranul, apoi alegi o temă, un fundal în mișcare și un
+        font, sau păstrezi sugestiile.</li>
+    </ul>
+    <p>
+      Încă nu ai calendare pe televizor? Adaugă-ți contul Google în
+      <em>Setări &rsaquo; Conturi și conectare</em> pe televizor; calendarele
+      apar în câteva minute. Lângă un calendar marcat <em>Nesincronizat</em>
+      ai butonul <em>Pornește sincronizarea</em>.
+    </p>
+    <p>
+      Ajutorul din aplicație răspunde la rest, în cuvinte simple, chiar pe
+      televizor.
+    </p>
+  </section>
+
+  <section id="screenshots">
+    <h2>Capturi de ecran</h2>
+    <p class="lang-label">Făcute cu calendarul demonstrativ: niciun eveniment real. Atinge o imagine ca s-o mărești.</p>
+    <div class="shots shots--wide">
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_01_days_dark_ro.jpg" data-caption="Azi și zilele următoare, ușor de citit de pe canapea">
+          <img src="../images/dayok/tv_01_days_dark_ro.jpg" alt="Vederea pe 3 zile pe televizor, tema închisă, cu calendarele demonstrative" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Azi și zilele următoare, ușor de citit de pe canapea</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_02_week_dark_ro.jpg" data-caption="Săptămâna: ce urmează, zi cu zi">
+          <img src="../images/dayok/tv_02_week_dark_ro.jpg" alt="Vederea săptămânii pe televizor, tema închisă" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Săptămâna: ce urmează, zi cu zi</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_03_month_dark_ro.jpg" data-caption="Luna dintr-o privire, colorată pe calendare">
+          <img src="../images/dayok/tv_03_month_dark_ro.jpg" alt="Vederea lunii pe televizor, tema închisă" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Luna dintr-o privire, colorată pe calendare</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_04_year_dark_ro.jpg" data-caption="Anul: zilele aglomerate dintr-o privire">
+          <img src="../images/dayok/tv_04_year_dark_ro.jpg" alt="Vederea anului pe televizor, tema închisă" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Anul: zilele aglomerate dintr-o privire</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_05_details_light_ro.jpg" data-caption="Detaliile evenimentului: când, unde, cât de des">
+          <img src="../images/dayok/tv_05_details_light_ro.jpg" alt="Detaliile unui eveniment pe televizor, tema deschisă" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Detaliile evenimentului: când, unde, cât de des</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_06_month_light_ro.jpg" data-caption="Luminoasă sau întunecată, calmă oricum">
+          <img src="../images/dayok/tv_06_month_light_ro.jpg" alt="Vederea lunii pe televizor, tema deschisă" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Luminoasă sau întunecată, calmă oricum</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="devices">
+    <h2>Unde merge</h2>
+    <ul class="features">
+      <li>Google TV și Android TV, cu telecomanda</li>
+      <li>Tablete Android, prin atingere, în orice orientare</li>
+      <li>Telefoane Android, prin atingere, pe orizontală</li>
+    </ul>
+    <p>
+      O singură cumpărare pentru toate dispozitivele tale cu același cont
+      Google Play. Familia ta o poate folosi prin Biblioteca de familie Google
+      Play, acolo unde este disponibilă.
+    </p>
+    <p>
+      Day OK are nevoie de Android 7 sau mai nou, cu Google Play. Nu este
+      disponibilă pentru Samsung (Tizen), LG (webOS) sau Fire TV, nici pentru
+      iPhone și iPad.
     </p>
   </section>
 
@@ -554,14 +696,6 @@ main.wide { max-width: 1080px; }
     </ul>
   </section>
 
-  <section id="screenshots">
-    <h2>Capturi de ecran</h2>
-    <div class="shots-placeholder" role="note">
-      <p>Capturile de ecran pentru televizor, tabletă și telefon vin
-        odată cu pagina aplicației din Google Play.</p>
-    </div>
-  </section>
-
   <section id="privacy">
     <h2>Confidențialitate de la bun început</h2>
     <ul class="features">
@@ -570,20 +704,64 @@ main.wide { max-width: 1080px; }
       <li>Evenimentele tale sunt citite pe dispozitiv și rămân acolo.</li>
       <li>Fără reclame, fără urmărire, fără statistici, fără cont.</li>
     </ul>
+    <p>
+      Ca să-ți arate calendarul imediat la pornire, Day OK păstrează pe
+      dispozitiv o copie criptată a ultimelor evenimente afișate. Nu intră
+      niciodată în copia de rezervă și se șterge când retragi permisiunea de
+      calendar.
+    </p>
     <p class="section-link">
       <a href="privacy/index_ro.html">Citește Politica de confidențialitate Day OK</a>
     </p>
   </section>
 
-  <section id="contact">
+  <section id="faq" class="faq">
+    <h2>Întrebări frecvente</h2>
+    <details>
+      <summary>Ce calendare afișează?</summary>
+      <p>Calendarele pe care dispozitivul le sincronizează deja: pe televizor, de obicei Google Calendar; pe telefon sau tabletă, și conturi precum Microsoft Exchange, sincronizate pe dispozitiv. Tu alegi care apar.</p>
+    </details>
+    <details>
+      <summary>Merge pe televizorul meu?</summary>
+      <p>Pe Google TV și Android TV cu Google Play, Android 7 sau mai nou. Pentru că o instalezi din Google Play, contul tău Google e deja pe televizor; dacă lipsesc calendarele, aplicația îți arată cum le pornești sincronizarea. Nu este disponibilă pentru Samsung, LG sau Fire TV.</p>
+    </details>
+    <details>
+      <summary>Plătesc din nou pentru telefon sau tabletă?</summary>
+      <p>Nu. O singură cumpărare acoperă toate dispozitivele tale cu același cont Google Play. Pe telefon, Day OK se afișează pe orizontală.</p>
+    </details>
+    <details>
+      <summary>Familia mea o poate folosi fără să o cumpere din nou?</summary>
+      <p>Da, prin Biblioteca de familie Google Play, acolo unde este disponibilă: o pot folosi până la cinci membri ai familiei.</p>
+    </details>
+    <details>
+      <summary>Îmi modifică calendarul?</summary>
+      <p>Nu. Nu adaugă, nu modifică și nu șterge niciodată evenimente. Le modifici ca de obicei, pe telefon sau pe calculator, iar schimbările apar după următoarea sincronizare. Singura schimbare pe care o poate face este cea pe care o ceri tu: <em>Pornește sincronizarea</em>, pentru un calendar marcat <em>Nesincronizat</em>.</p>
+    </details>
+    <details>
+      <summary>Pot modifica evenimente pe televizor?</summary>
+      <p>Încă nu. Dacă ți-ar plăcea, trimite-ne o cerere din <em>Setări &rsaquo; Despre &rsaquo; Contact și sugestii</em>.</p>
+    </details>
+    <details>
+      <summary>Îmi colectează evenimentele?</summary>
+      <p>Nu. Nu are permisiunea de acces la internet. Evenimentele tale sunt citite pe dispozitiv și rămân acolo.</p>
+    </details>
+    <details>
+      <summary>Îmi ține televizorul pornit?</summary>
+      <p>Doar cât timp Day OK e pe ecran și în limitele setărilor de energie și de screensaver ale televizorului; ajutorul din aplicație îți arată ce să schimbi. Nu poate porni un televizor aflat în standby.</p>
+    </details>
+    <details>
+      <summary>Cum funcționează rambursările?</summary>
+      <p>Cumpărările și rambursările sunt gestionate de Google Play, după propriile reguli.</p>
+    </details>
+  </section>
+
+  <section id="contact" class="contact-block">
     <h2>Contact</h2>
-    <p>
-      Întrebări, o problemă cu un anumit televizor, o anumită
-      tabletă sau un anumit telefon, ori o sugestie: scrie-ne la
-      <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>. În aplicație, <em>Setări &rsaquo;
-      Despre &rsaquo; Contact și sugestii</em> îți pregătește e-mailul și îți
-      arată exact ce conține, înainte ca aplicația ta de e-mail să îl trimită.
-    </p>
+    <img class="contact-logo" src="../images/jini_logo.jpg" alt="Jini Solutions"
+         height="72">
+    <p class="contact-blurb">Întrebări, o problemă sau o sugestie? Scrie-ne la <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.</p>
+    <p class="contact-blurb section-link">
+      <a href="../contact/index.html">Despre noi și cum ne contactezi</a></p>
   </section>
 
 </main>
@@ -598,7 +776,52 @@ main.wide { max-width: 1080px; }
     <span class="sep">|</span>
     <span class="nowrap">&copy; 2026 Jini Solutions</span>
   </p>
+  <p class="studio-line">Studio independent · București, România</p>
 </footer>
+<dialog id="lightbox" class="lightbox" aria-label="Enlarged image">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous image">&#8249;</button>
+  <img alt="Enlarged image">
+  <button type="button" class="lb-next" aria-label="Next image">&#8250;</button>
+  <p class="lb-caption"></p>
+</dialog>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll("a.zoom"));
+  var box = document.getElementById("lightbox");
+  if (!box || !links.length || typeof box.showModal !== "function") return;
+  var img = box.querySelector("img"), cap = box.querySelector(".lb-caption");
+  var prev = box.querySelector(".lb-prev"), next = box.querySelector(".lb-next");
+  var current = -1, opener = null;
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var a = links[current];
+    img.src = a.getAttribute("href");
+    img.alt = a.getAttribute("data-caption") || "";
+    cap.textContent = img.alt;
+    var many = links.length > 1;
+    prev.hidden = !many; next.hidden = !many;
+    if (!box.open) { box.showModal(); box.querySelector(".lb-close").focus(); }
+  }
+  box.addEventListener("close", function () {
+    img.src = ""; current = -1;
+    if (opener) opener.focus();
+  });
+  links.forEach(function (a, i) {
+    a.addEventListener("click", function (e) { e.preventDefault(); opener = a; show(i); });
+  });
+  box.querySelector(".lb-close").addEventListener("click", function () { box.close(); });
+  prev.addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
+  next.addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
+  box.addEventListener("click", function (e) {
+    if (e.target === box || e.target === img) box.close();
+  });
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") show(current - 1);
+    else if (e.key === "ArrowRight") show(current + 1);
+  });
+})();
+</script>
 
 </body>
 </html>

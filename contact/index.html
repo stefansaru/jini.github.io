@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About & Contact: Jini Solutions</title>
+  <meta name="description"
+        content="Jini Solutions, a small independent app studio in Bucharest, Romania. How to reach us: hello@jini.solutions.">
+  <meta name="theme-color" content="#1F2937">
+  <link rel="icon" href="../images/favicon-32.png">
+  <link rel="icon" href="../images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../images/favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jini Solutions">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="About &amp; Contact: Jini Solutions">
+  <meta property="og:description" content="Jini Solutions, a small independent app studio in Bucharest, Romania. How to reach us: hello@jini.solutions.">
+  <meta property="og:url" content="https://jini.solutions/contact/">
+  <meta property="og:image" content="https://jini.solutions/images/og/home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://jini.solutions/contact/">
+  <style>
+/* Palette, derived from the Jini logo:
+   dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
+:root {
+  --dark:   #1F2937;
+  --green:  #00D95F;
+  --green2: #00B84E;   /* hover / pressed */
+  --bg:     #F8FAFC;
+  --white:  #FFFFFF;
+  --border: #E5E7EB;
+  --muted:  #475569;   /* 7.6:1 on white (was #6B7280, 4.6:1 on --bg) */
+  --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+  --hero:   var(--dark); /* an app page sets its own hero and link colours */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+}
+a { color: var(--dark); text-decoration: none; }
+/* Links inside running text are visible without hovering (2026-09-18):
+   the legal frameworks on the privacy page, the studio name on Contact. */
+.prose a, #contact a, #about a, #privacy a, .section-link a {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ── Skip link and the shared site header (2026-10-21) ─── */
+.skip {
+  position: absolute; left: 8px; top: -48px; z-index: 100;
+  background: var(--white); color: var(--dark); font-weight: 700;
+  padding: 8px 14px; border-radius: 6px;
+}
+.skip:focus { top: 8px; }
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+}
+.site-bar {
+  max-width: 1160px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 20px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.brand img { height: 32px; width: auto; border-radius: 6px; }
+.site-nav { display: flex; gap: 4px 20px; flex-wrap: wrap; }
+.site-nav a {
+  font-weight: 600; font-size: 15px; padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ── Hero: the studio's charcoal, or the app's own colour ── */
+.app-hero, .studio-hero {
+  background: var(--hero);
+  color: var(--white);
+  text-align: center;
+  padding: 72px 24px 56px;
+}
+.app-hero h1, .studio-hero h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+/* Green dot accent: mirrors the logo dots */
+.app-hero span.dot, .studio-hero span.dot { color: var(--green); }
+.app-hero p, .studio-hero p {
+  font-size: clamp(1.125rem, 2vw, 1.3rem);
+  margin-top: 12px;
+  color: rgba(255,255,255,0.85);
+}
+/* Focus stays visible on the coloured heroes. */
+.app-hero a:focus-visible, .studio-hero a:focus-visible, .hero a:focus-visible {
+  outline-color: var(--white);
+}
+.cta-row { margin-top: 28px; }
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--green2); text-decoration: none; }
+.cta-soon {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  padding: 11px 24px;
+  border-radius: 10px;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+.page-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  text-align: center;
+}
+.page-nav a {
+  display: inline-block;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 2px 12px;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.page-nav a:hover, .page-nav a[aria-current="page"] {
+  border-bottom-color: var(--green); text-decoration: none;
+}
+
+/* ── Main / Sections ────────────────────────────────────── */
+main { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+main:has(> section.prose) { max-width: 840px; }
+section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+}
+/* Website v2: no green bar before every h2; the green is kept for the
+   full stop in the titles. */
+h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+p { margin-bottom: 12px; font-size: 1.0625rem; color: #374151; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Stats grid ─────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-card .number {
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--link);   /* 5.2:1 on --bg; the green read 2.5:1 (2026-10-24) */
+  letter-spacing: -1px;
+}
+.stat-card .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ── Theme list ─────────────────────────────────────────── */
+.theme-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.theme-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.theme-list li .theme-name { font-weight: 600; }
+.theme-list li .puzzle-count {
+  background: #E6F9EE;
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ── Language badges ────────────────────────────────────── */
+.lang-label { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.lang-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.lang-badge {
+  background: var(--dark);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* ── Features list ──────────────────────────────────────── */
+.features { list-style: none; }
+.features li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 1.0625rem;
+  color: #374151;
+  border-bottom: 1px solid var(--border);
+}
+.features li:last-child { border-bottom: none; }
+.features li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--link);
+}
+
+/* ── Contact: the app's Contact page (2026-09-18) ───────── */
+.contact-logo {
+  display: block;
+  height: 72px; width: auto;
+  margin: 4px auto 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-blurb { text-align: center; }
+#contact h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 16px 0 4px;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--dark); }
+footer .sep { margin: 0 10px; opacity: 0.4; }
+footer .studio-line { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+/* ── How the app is paid for (website v2, 2026-10-24) ──── */
+.app-hero p.price-line {
+  font-size: 15px; font-weight: 700; margin-top: 16px;
+  color: rgba(255,255,255,0.9);
+}
+.app-price { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+/* ── Website v2 pages: app name over a slogan, wide galleries, FAQ ── */
+.app-hero p.app-name {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-size: 1.25rem; font-weight: 800; color: var(--white);
+}
+.app-hero p.app-name img { border-radius: 10px; }
+.shots.shots--wide {
+  display: grid; gap: 16px; overflow: visible;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+.shot.shot--wide { width: auto; }
+.shot.shot--wide img { border-radius: 10px; }
+.faq details { border-top: 1px solid var(--border); padding: 12px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.0625rem; }
+.faq details p { margin: 8px 0 0; }
+ul.features + p { margin-top: 14px; }
+.contact-block { text-align: center; }
+.contact-block h2 { text-align: left; }
+.nowrap { white-space: nowrap; }
+
+/* ── Privacy prose ──────────────────────────────────────── */
+.prose { font-size: 1.0625rem; color: #374151; }
+.prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.prose h2 {
+  font-size: 1.2rem; font-weight: 700; color: var(--dark);
+  margin: 28px 0 8px;
+}
+.prose p  { margin-bottom: 10px; }
+.prose ul { margin: 6px 0 12px 20px; }
+.prose ul li { margin-bottom: 4px; }
+/* ── Store badges / platforms line (2026-09-17) ─────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
+
+/* ── Hero: the Play feature graphic under the header ────── */
+.hero { background: var(--hero); padding: 0 24px 40px; text-align: center; }
+.hero img {
+  max-width: 900px; width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Screenshot gallery: six phone captures, scroll-snap ─── */
+.shots {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  flex: 0 0 auto; scroll-snap-align: start;
+  width: 180px; margin: 0; text-align: center;
+}
+.shot img {
+  width: 100%; height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15,23,42,0.10);
+  background: #000;
+}
+.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
+@media (min-width: 900px) {
+  .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
+  .shot { width: calc((100% - 5 * 14px) / 6); }
+}
+
+/* ── Rights table on the privacy page ───────────────────── */
+.prose table.rights {
+  width: 100%; border-collapse: collapse;
+  margin: 12px 0 16px; font-size: 14px;
+}
+.prose table.rights th, .prose table.rights td {
+  border: 1px solid var(--border); padding: 8px 10px;
+  vertical-align: top; text-align: left;
+}
+.prose table.rights th {
+  background: var(--bg); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.prose table.rights td:first-child { white-space: nowrap; }
+.prose table.rights .art { font-size: 12px; color: var(--muted); }
+.prose table.rights .art a { color: var(--link); }
+@media (max-width: 640px) {
+  .prose table.rights, .prose table.rights thead, .prose table.rights tbody,
+  .prose table.rights tr, .prose table.rights th, .prose table.rights td { display: block; }
+  .prose table.rights thead { display: none; }
+  .prose table.rights tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    margin-bottom: 10px; padding: 6px 0;
+  }
+  .prose table.rights td { border: none; padding: 4px 12px; white-space: normal; }
+  .prose table.rights td:first-child { white-space: normal; }
+}
+
+/* ── Click to enlarge: the zoom links and the lightbox ─────── */
+a.zoom { display: block; cursor: zoom-in; }
+a.zoom:hover { text-decoration: none; }
+a.zoom img { transition: transform 0.15s; }
+a.zoom:hover img { transform: scale(1.02); }
+dialog.lightbox {
+  border: none; background: transparent; color: var(--white);
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  margin: 0; padding: 48px 64px;
+}
+dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+dialog.lightbox::backdrop { background: rgba(15,23,42,0.92); }
+dialog.lightbox :focus-visible { outline-color: var(--white); }
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 120px);
+  border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  cursor: zoom-out; background: #000;
+}
+.lightbox button {
+  position: absolute; border: none; background: rgba(255,255,255,0.12);
+  color: var(--white); font-size: 28px; line-height: 1;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+}
+.lightbox button:hover { background: rgba(255,255,255,0.25); }
+.lightbox .lb-close { top: 16px; right: 16px; }
+.lightbox .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .lb-caption {
+  position: absolute; left: 0; right: 0; bottom: 14px;
+  text-align: center; color: rgba(255,255,255,0.75); font-size: 13px;
+  padding: 0 64px; margin: 0;
+}
+@media (max-width: 640px) {
+  .lightbox { padding: 56px 8px 40px; }
+  .lightbox img { max-height: calc(100vh - 100px); }
+}
+
+/* ── Slim heroes (privacy pages) and the studio hero ────── */
+.app-hero--slim, .studio-hero--slim { padding: 22px 24px; }
+.app-hero p.eyebrow, .studio-hero p.eyebrow {
+  font-size: 22px; font-weight: 800; color: var(--white); margin: 0;
+}
+.page-title { font-size: 26px; margin-bottom: 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.updated { margin-top: 6px; font-size: 12px; }
+
+/* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
+main.wide { max-width: 1160px; }
+.app-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+}
+.app-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+  border-top: 5px solid var(--accent, var(--green));
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.app-card p { margin: 0; }
+.app-head { display: flex; gap: 14px; align-items: center; }
+.app-icon {
+  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--white);
+}
+.app-monogram {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent, var(--dark)); color: var(--white);
+  font-weight: 800; font-size: 22px; letter-spacing: 0.5px; border: none;
+}
+.app-card h3 { font-size: 21px; font-weight: 800; line-height: 1.25; }
+.app-card h3 a { color: var(--dark); }
+.app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
+.badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.badges li {
+  font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
+}
+.app-links {
+  display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+  margin-top: auto !important; padding-top: 6px;
+}
+.app-links a:not(.cta-btn) {
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+  font-weight: 600; font-size: 14px;
+}
+.app-soon {
+  display: inline-block; padding: 8px 14px; border-radius: 10px;
+  border: 1px dashed #9CA3AF; color: #374151; font-size: 14px; font-weight: 600;
+}
+.app-card .cta-btn { padding: 8px 18px; }
+
+/* ── Privacy index, screenshots placeholder ─────────────── */
+.policy-list { list-style: none; margin: 16px 0 0 !important; }
+.policy-list li { padding: 12px 0; border-top: 1px solid var(--border); }
+.shots-placeholder {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 36px 20px; text-align: center; color: var(--muted);
+}
+
+/* ── Phones and small tablets ───────────────────────────── */
+@media (max-width: 640px) {
+  .site-bar { padding: 8px 16px; }
+  .brand span { font-size: 16px; }
+  main { padding: 24px 16px 40px; }
+  section { padding: 20px 18px; border-radius: 14px; }
+  .app-hero, .studio-hero { padding: 40px 16px 32px; }
+  .hero { padding: 0 16px 24px; }
+  .page-nav a { margin: 2px 8px; }
+}
+/* ── Reduced motion (website v2) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  a.zoom:hover img { transform: none; }
+}
+
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-bar">
+    <a class="brand" href="../index.html">
+      <img src="../images/jini_logo.jpg" alt="" width="49" height="32">
+      <span>Jini Solutions</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../contact/index.html" aria-current="page">About &amp; Contact</a>
+      <a href="../privacy/index.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="studio-hero">
+  <h1>About &amp; Contact<span class="dot">.</span></h1>
+</div>
+
+<main id="main">
+
+  <section id="about">
+    <h2>About Jini Solutions</h2>
+    <img class="contact-logo" src="../images/jini_logo.jpg" alt="Jini Solutions logo"
+         height="72">
+    <p class="contact-blurb"><strong>Small Studio. Big Ideas.</strong></p>
+    <p>
+      Jini Solutions is a small independent app studio in Bucharest, Romania,
+      run by one developer. We make apps for play and for everyday life:
+    </p>
+    <ul class="features">
+      <li><a href="../amethyst/index.html"><strong>Amethyst</strong></a>: Guess the answer behind four pictures. <span class="muted">Free · With ads</span></li>
+      <li><a href="../dayok/index.html"><strong>Day OK</strong></a>: A calm calendar and clock for your TV, tablet and phone. <span class="muted">One-time purchase · No ads</span></li>
+    </ul>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy, app by app</h2>
+    <p>
+      Each app handles data in its own way, so each has its own privacy policy:
+    </p>
+    <ul class="features">
+      <li><a href="../amethyst/privacy_policy.html">Amethyst Privacy Policy</a>: a game with ads from Google AdMob; your progress stays on your device</li>
+      <li><a href="../dayok/privacy/index.html">Day OK Privacy Policy</a>: no internet access; your calendars are read on the device and stay there</li>
+    </ul>
+    <p>
+      This website has no cookies, no analytics and no trackers. It is hosted
+      on GitHub Pages, which, like any web host, processes technical request
+      data (such as IP addresses) to deliver the pages and keep them secure.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Questions, a problem, an idea for a feature, or a suggestion about any of
+      the apps: write to us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.
+    </p>
+    <p>
+      Each app also has a Contact page inside it that prepares the email for
+      you.
+    </p>
+    <h3>Include relevant details</h3>
+    <p>Please include screenshots or screen recordings detailing the problems. This helps us fix the problem faster.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    <a href="../index.html#apps">Apps</a>
+    <span class="sep">|</span>
+    <a href="../privacy/index.html">Privacy</a>
+    <span class="sep">|</span>
+    <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>
+    <span class="sep">|</span>
+    <span class="nowrap">&copy; 2026 Jini Solutions</span>
+  </p>
+  <p class="studio-line">Independent studio · Bucharest, Romania</p>
+</footer>
+
+</body>
+</html>

@@ -6,10 +6,21 @@
   <title>Amethyst - 4 Pic 1 Answer</title>
   <meta name="description"
         content="Amethyst is a multilingual 4 Pic 1 Answer puzzle game. Look at four pictures, find the answer they have in common, then trace it through the letter grid in one swipe.">
-  <link rel="canonical" href="https://jini.solutions/amethyst/">
+  <meta name="theme-color" content="#4B2A7B">
+  <link rel="icon" href="../images/favicon-32.png">
+  <link rel="icon" href="../images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../images/favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jini Solutions">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Amethyst - 4 Pic 1 Answer">
-  <meta property="og:description" content="Guess the answer behind four pictures.">
-  <meta property="og:image" content="../images/feature_graphic.png">
+  <meta property="og:description" content="Amethyst is a multilingual 4 Pic 1 Answer puzzle game. Look at four pictures, find the answer they have in common, then trace it through the letter grid in one swipe.">
+  <meta property="og:url" content="https://jini.solutions/amethyst/">
+  <meta property="og:image" content="https://jini.solutions/images/og/amethyst.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://jini.solutions/amethyst/">
   <style>
 /* Palette, derived from the Jini logo:
    dark charcoal #1F2937, vivid green #00D95F, white #FFFFFF */
@@ -20,12 +31,15 @@
   --bg:     #F8FAFC;
   --white:  #FFFFFF;
   --border: #E5E7EB;
-  --muted:  #6B7280;
+  --muted:  #475569;   /* 7.6:1 on white (was #6B7280, 4.6:1 on --bg) */
   --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+  --hero:   var(--dark); /* an app page sets its own hero and link colours */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font);
   background: var(--bg);
   color: var(--dark);
   line-height: 1.6;
@@ -53,7 +67,7 @@ img { max-width: 100%; }
   position: sticky; top: 0; z-index: 20;
 }
 .site-bar {
-  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  max-width: 1160px; margin: 0 auto; padding: 10px 24px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 8px 20px; flex-wrap: wrap;
 }
@@ -69,24 +83,29 @@ img { max-width: 100%; }
 }
 a:hover { text-decoration: underline; }
 
-/* ── Header ────────────────────────────────────────────── */
+/* ── Hero: the studio's charcoal, or the app's own colour ── */
 .app-hero, .studio-hero {
-  background: var(--dark);
+  background: var(--hero);
   color: var(--white);
   text-align: center;
   padding: 72px 24px 56px;
 }
 .app-hero h1, .studio-hero h1 {
-  font-size: 48px;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 /* Green dot accent: mirrors the logo dots */
 .app-hero span.dot, .studio-hero span.dot { color: var(--green); }
 .app-hero p, .studio-hero p {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 2vw, 1.3rem);
   margin-top: 12px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
+}
+/* Focus stays visible on the coloured heroes. */
+.app-hero a:focus-visible, .studio-hero a:focus-visible, .hero a:focus-visible {
+  outline-color: var(--white);
 }
 .cta-row { margin-top: 28px; }
 .cta-btn {
@@ -96,17 +115,17 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   font-size: 15px;
   padding: 12px 28px;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: background 0.15s;
 }
 .cta-btn:hover { background: var(--green2); text-decoration: none; }
 .cta-soon {
   display: inline-block;
-  border: 2px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.7);
-  font-size: 14px;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
   padding: 11px 24px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -131,35 +150,26 @@ a:hover { text-decoration: underline; }
 }
 
 /* ── Main / Sections ────────────────────────────────────── */
-main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+main { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+main:has(> section.prose) { max-width: 840px; }
 section {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 28px 32px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
 }
+/* Website v2: no green bar before every h2; the green is kept for the
+   full stop in the titles. */
 h2 {
-  font-size: 20px;
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--dark);
   margin-bottom: 16px;
 }
-/* Green left rule on h2 */
-h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 10px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-}
-p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p { margin-bottom: 12px; font-size: 1.0625rem; color: #374151; }
 p:last-child { margin-bottom: 0; }
 
 /* ── Stats grid ─────────────────────────────────────────── */
@@ -180,11 +190,11 @@ p:last-child { margin-bottom: 0; }
   display: block;
   font-size: 36px;
   font-weight: 800;
-  color: var(--green2);
+  color: var(--link);   /* 5.2:1 on --bg; the green read 2.5:1 (2026-10-24) */
   letter-spacing: -1px;
 }
 .stat-card .label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--muted);
   text-transform: uppercase;
@@ -236,9 +246,9 @@ p:last-child { margin-bottom: 0; }
 /* ── Features list ──────────────────────────────────────── */
 .features { list-style: none; }
 .features li {
-  padding: 6px 0 6px 24px;
+  padding: 8px 0 8px 24px;
   position: relative;
-  font-size: 15px;
+  font-size: 1.0625rem;
   color: #374151;
   border-bottom: 1px solid var(--border);
 }
@@ -252,7 +262,7 @@ p:last-child { margin-bottom: 0; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--link);
 }
 
 /* ── Contact: the app's Contact page (2026-09-18) ───────── */
@@ -281,25 +291,43 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--dark); }
 footer .sep { margin: 0 10px; opacity: 0.4; }
+footer .studio-line { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+/* ── How the app is paid for (website v2, 2026-10-24) ──── */
+.app-hero p.price-line {
+  font-size: 15px; font-weight: 700; margin-top: 16px;
+  color: rgba(255,255,255,0.9);
+}
+.app-price { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+/* ── Website v2 pages: app name over a slogan, wide galleries, FAQ ── */
+.app-hero p.app-name {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-size: 1.25rem; font-weight: 800; color: var(--white);
+}
+.app-hero p.app-name img { border-radius: 10px; }
+.shots.shots--wide {
+  display: grid; gap: 16px; overflow: visible;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+.shot.shot--wide { width: auto; }
+.shot.shot--wide img { border-radius: 10px; }
+.faq details { border-top: 1px solid var(--border); padding: 12px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.0625rem; }
+.faq details p { margin: 8px 0 0; }
+ul.features + p { margin-top: 14px; }
+.contact-block { text-align: center; }
+.contact-block h2 { text-align: left; }
 .nowrap { white-space: nowrap; }
 
 /* ── Privacy prose ──────────────────────────────────────── */
-.prose { font-size: 15px; color: #374151; }
+.prose { font-size: 1.0625rem; color: #374151; }
 .prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
 .prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
 .prose h2 {
-  font-size: 16px; font-weight: 700; color: var(--dark);
-  margin: 24px 0 8px;
-}
-.prose h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px; height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 8px;
-  vertical-align: middle;
-  position: relative; top: -1px;
+  font-size: 1.2rem; font-weight: 700; color: var(--dark);
+  margin: 28px 0 8px;
 }
 .prose p  { margin-bottom: 10px; }
 .prose ul { margin: 6px 0 12px 20px; }
@@ -309,7 +337,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
 
 /* ── Hero: the Play feature graphic under the header ────── */
-.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero { background: var(--hero); padding: 0 24px 40px; text-align: center; }
 .hero img {
   max-width: 900px; width: 100%; height: auto;
   border-radius: 18px;
@@ -334,7 +362,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   box-shadow: 0 8px 20px rgba(15,23,42,0.10);
   background: #000;
 }
-.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
 @media (min-width: 900px) {
   .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
   .shot { width: calc((100% - 5 * 14px) / 6); }
@@ -373,13 +401,14 @@ a.zoom { display: block; cursor: zoom-in; }
 a.zoom:hover { text-decoration: none; }
 a.zoom img { transition: transform 0.15s; }
 a.zoom:hover img { transform: scale(1.02); }
-.lightbox {
-  position: fixed; inset: 0; z-index: 100;
-  background: rgba(15,23,42,0.92);
-  display: flex; align-items: center; justify-content: center;
-  padding: 48px 64px;
+dialog.lightbox {
+  border: none; background: transparent; color: var(--white);
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  margin: 0; padding: 48px 64px;
 }
-.lightbox[hidden] { display: none; }
+dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+dialog.lightbox::backdrop { background: rgba(15,23,42,0.92); }
+dialog.lightbox :focus-visible { outline-color: var(--white); }
 .lightbox img {
   max-width: 100%; max-height: calc(100vh - 120px);
   border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -414,7 +443,7 @@ a.zoom:hover img { transform: scale(1.02); }
 .updated { margin-top: 6px; font-size: 12px; }
 
 /* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
-main.wide { max-width: 1080px; }
+main.wide { max-width: 1160px; }
 .app-grid {
   display: grid; gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -440,7 +469,7 @@ main.wide { max-width: 1080px; }
 .app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
 .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .badges li {
-  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
   background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
 }
 .app-links {
@@ -452,8 +481,8 @@ main.wide { max-width: 1080px; }
   font-weight: 600; font-size: 14px;
 }
 .app-soon {
-  display: inline-block; padding: 8px 14px; border-radius: 8px;
-  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+  display: inline-block; padding: 8px 14px; border-radius: 10px;
+  border: 1px dashed #9CA3AF; color: #374151; font-size: 14px; font-weight: 600;
 }
 .app-card .cta-btn { padding: 8px 18px; }
 
@@ -472,15 +501,18 @@ main.wide { max-width: 1080px; }
   main { padding: 24px 16px 40px; }
   section { padding: 20px 18px; border-radius: 14px; }
   .app-hero, .studio-hero { padding: 40px 16px 32px; }
-  .app-hero h1, .studio-hero h1 { font-size: 34px; }
-  .app-hero p, .studio-hero p { font-size: 17px; }
   .hero { padding: 0 16px 24px; }
   .page-nav a { margin: 2px 8px; }
+}
+/* ── Reduced motion (website v2) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  a.zoom:hover img { transform: none; }
 }
 
   </style>
 </head>
-<body>
+<body style="--hero:#4B2A7B;--link:#6D28D9">
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -491,7 +523,7 @@ main.wide { max-width: 1080px; }
     </a>
     <nav class="site-nav" aria-label="Site">
       <a href="../index.html#apps" aria-current="page">Apps</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../contact/index.html">About &amp; Contact</a>
       <a href="../privacy/index.html">Privacy</a>
     </nav>
   </div>
@@ -500,18 +532,17 @@ main.wide { max-width: 1080px; }
 <div class="app-hero">
   <h1>Amethyst<span class="dot">.</span></h1>
   <p>Guess the answer behind four pictures.</p>
+  <p class="price-line">Free · Small banner ad · Optional videos for hint coins · Nothing to buy</p>
   <div class="cta-row">
-    <span class="cta-soon">Coming soon to Google Play</span>
-    <span class="cta-soon">Coming soon to the App Store</span>
+    <span class="cta-soon">Coming to Google Play</span>
   </div>
-  <p class="platforms">For Android phones and tablets, and for iPhone and iPad.</p>
+  <p class="platforms">For Android phones.</p>
 </div>
 
 <div class="hero">
   <a class="zoom" href="../images/feature_graphic.png" data-caption="Amethyst">
     <img src="../images/feature_graphic.png" width="1024" height="500"
-         alt="Four photo tiles of apples around a purple question-mark paw emblem,
-              above five empty letter tiles, on an amethyst background">
+         alt="Four photo tiles of apples around a purple question-mark paw emblem, above five empty letter tiles, on an amethyst background">
   </a>
 </div>
 
@@ -520,6 +551,7 @@ main.wide { max-width: 1080px; }
   <a href="#screenshots">Screenshots</a>
   <a href="#app">The App</a>
   <a href="#features">Features</a>
+  <a href="#faq">FAQ</a>
   <a href="#contact">Contact</a>
   <a href="../amethyst/privacy_policy.html">Privacy</a>
 </nav>
@@ -561,42 +593,42 @@ main.wide { max-width: 1080px; }
           <img src="../images/screenshots/1.jpg" alt="A puzzle: four lily photos above the letter bank, with empty answer slots" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>1</figcaption>
+        <figcaption>A puzzle</figcaption>
       </figure>
       <figure class="shot">
         <a class="zoom" href="../images/screenshots/2.jpg" data-caption="The walkthrough card explaining the four clue images">
           <img src="../images/screenshots/2.jpg" alt="The walkthrough card explaining the four clue images" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>2</figcaption>
+        <figcaption>The four pictures</figcaption>
       </figure>
       <figure class="shot">
         <a class="zoom" href="../images/screenshots/3.jpg" data-caption="The walkthrough card pointing at the answer slots">
           <img src="../images/screenshots/3.jpg" alt="The walkthrough card pointing at the answer slots" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>3</figcaption>
+        <figcaption>The answer slots</figcaption>
       </figure>
       <figure class="shot">
         <a class="zoom" href="../images/screenshots/4.jpg" data-caption="The walkthrough showing that every answer can be swiped through the letters">
           <img src="../images/screenshots/4.jpg" alt="The walkthrough showing that every answer can be swiped through the letters" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>4</figcaption>
+        <figcaption>Swipe or tap</figcaption>
       </figure>
       <figure class="shot">
         <a class="zoom" href="../images/screenshots/5.jpg" data-caption="The answer LILY traced through the letter grid in one swipe">
           <img src="../images/screenshots/5.jpg" alt="The answer LILY traced through the letter grid in one swipe" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>5</figcaption>
+        <figcaption>One swipe</figcaption>
       </figure>
       <figure class="shot">
         <a class="zoom" href="../images/screenshots/6.jpg" data-caption="The solved puzzle with the Continue button and the speak-answer control">
           <img src="../images/screenshots/6.jpg" alt="The solved puzzle with the Continue button and the speak-answer control" loading="lazy"
                width="540" height="1075">
         </a>
-        <figcaption>6</figcaption>
+        <figcaption>Solved</figcaption>
       </figure>
     </div>
   </section>
@@ -610,11 +642,11 @@ main.wide { max-width: 1080px; }
         <div class="label">Themes</div>
       </div>
       <div class="stat-card">
-        <span class="number">800+</span>
+        <span class="number">850+</span>
         <div class="label">Puzzles</div>
       </div>
       <div class="stat-card">
-        <span class="number">16000+</span>
+        <span class="number">16,000+</span>
         <div class="label">Images</div>
       </div>
       <div class="stat-card">
@@ -643,24 +675,52 @@ main.wide { max-width: 1080px; }
     <ul class="features">
       <li>No invasive ads that interrupt you</li>
       <li>Free to play, nothing to buy</li>
-      <li>Works offline</li>
+      <li>Puzzles work offline; ads and reward videos need a connection</li>
       <li>Fully localised in 10 languages</li>
       <li>Hints: reveal a letter, clear the wrong letters, or show the answer</li>
       <li>Light, dark and high-contrast palettes</li>
-      <li>The same game on Android and iOS</li>
     </ul>
   </section>
 
-  <section id="contact">
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Is Amethyst really free?</summary>
+      <p>Yes. There is nothing to buy and no subscription. A small banner ad supports the game; watching a video to earn hint coins is always your choice.</p>
+    </details>
+    <details>
+      <summary>Do I have to watch videos to keep playing?</summary>
+      <p>No. Every puzzle can be played without them. Videos only earn hint coins, and hints keep their usual price without them.</p>
+    </details>
+    <details>
+      <summary>Can I play offline?</summary>
+      <p>Yes, the puzzles work offline. Ads and reward videos need a connection.</p>
+    </details>
+    <details>
+      <summary>How many puzzles and languages are there?</summary>
+      <p>850+ puzzles in 28 themes, in 10 languages: English (US), English (UK), German, Spanish, French, Italian, Dutch, Portuguese (Portugal), Portuguese (Brazil), Romanian.</p>
+    </details>
+    <details>
+      <summary>Are the pictures made with AI?</summary>
+      <p>Yes. The pictures are made with AI tools, and each one is checked by a person before it goes into the game.</p>
+    </details>
+    <details>
+      <summary>Do I need an account?</summary>
+      <p>No. There is no sign-up, and your progress stays on your device.</p>
+    </details>
+    <details>
+      <summary>What do the ads know about me?</summary>
+      <p>The ads come from Google AdMob. What it may collect, and the choices you have, are in the <a href="privacy_policy.html">Privacy Policy</a>.</p>
+    </details>
+  </section>
+
+  <section id="contact" class="contact-block">
     <h2>Contact</h2>
     <img class="contact-logo" src="../images/jini_logo.jpg" alt="Jini Solutions"
          height="72">
-    <p class="contact-blurb"><a href="https://jini.solutions/" rel="noopener" target="_blank">Jini Solutions</a> is a small indie game studio from Bucharest, Romania.</p>
-    <h3>Did you find a problem?</h3>
-    <p>Write to us if you want to send a suggestion, propose a new feature or theme, suggest a new language for translation, or report an app problem, a translation error, or an inappropriate image.</p>
-    <h3>Include relevant details</h3>
-    <p>Please include screenshots or screen recordings detailing the problems. This helps us fix the problem faster.</p>
-    <p><a href="mailto:hello@jini.solutions">hello@jini.solutions</a></p>
+    <p class="contact-blurb">Questions, a problem or a suggestion? Write to us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.</p>
+    <p class="contact-blurb section-link">
+      <a href="../contact/index.html">About us and how to reach us</a></p>
   </section>
 
 </main>
@@ -675,24 +735,23 @@ main.wide { max-width: 1080px; }
     <span class="sep">|</span>
     <span class="nowrap">&copy; 2026 Jini Solutions</span>
   </p>
-  <p class="updated"><a href="../amethyst/privacy_policy.html">Amethyst Privacy Policy</a> &middot; Updated 2026-10-23 06:49 UTC</p>
+  <p class="studio-line">Independent studio · Bucharest, Romania</p>
 </footer>
-<div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog"
-     aria-label="Enlarged image">
+<dialog id="lightbox" class="lightbox" aria-label="Enlarged image">
   <button type="button" class="lb-close" aria-label="Close">&times;</button>
   <button type="button" class="lb-prev" aria-label="Previous image">&#8249;</button>
   <img alt="Enlarged image">
   <button type="button" class="lb-next" aria-label="Next image">&#8250;</button>
   <p class="lb-caption"></p>
-</div>
+</dialog>
 <script>
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll("a.zoom"));
   var box = document.getElementById("lightbox");
-  if (!box || !links.length) return;
+  if (!box || !links.length || typeof box.showModal !== "function") return;
   var img = box.querySelector("img"), cap = box.querySelector(".lb-caption");
   var prev = box.querySelector(".lb-prev"), next = box.querySelector(".lb-next");
-  var current = -1;
+  var current = -1, opener = null;
   function show(i) {
     current = (i + links.length) % links.length;
     var a = links[current];
@@ -701,24 +760,23 @@ main.wide { max-width: 1080px; }
     cap.textContent = img.alt;
     var many = links.length > 1;
     prev.hidden = !many; next.hidden = !many;
-    box.hidden = false;
-    document.body.style.overflow = "hidden";
+    if (!box.open) { box.showModal(); box.querySelector(".lb-close").focus(); }
   }
-  function hide() {
-    box.hidden = true; img.src = ""; current = -1;
-    document.body.style.overflow = "";
-  }
-  links.forEach(function (a, i) {
-    a.addEventListener("click", function (e) { e.preventDefault(); show(i); });
+  box.addEventListener("close", function () {
+    img.src = ""; current = -1;
+    if (opener) opener.focus();
   });
-  box.querySelector(".lb-close").addEventListener("click", hide);
+  links.forEach(function (a, i) {
+    a.addEventListener("click", function (e) { e.preventDefault(); opener = a; show(i); });
+  });
+  box.querySelector(".lb-close").addEventListener("click", function () { box.close(); });
   prev.addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
   next.addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
-  box.addEventListener("click", function (e) { if (e.target === box || e.target === img) hide(); });
-  document.addEventListener("keydown", function (e) {
-    if (box.hidden) return;
-    if (e.key === "Escape") hide();
-    else if (e.key === "ArrowLeft") show(current - 1);
+  box.addEventListener("click", function (e) {
+    if (e.target === box || e.target === img) box.close();
+  });
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") show(current - 1);
     else if (e.key === "ArrowRight") show(current + 1);
   });
 })();

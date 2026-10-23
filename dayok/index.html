@@ -6,6 +6,20 @@
   <title>Day OK: A calm calendar and clock for your TV, tablet and phone</title>
   <meta name="description"
         content="Day OK: A calm calendar and clock for your TV, tablet and phone. Day OK shows your day, week, month and year at a glance. It reads the calendars your device already syncs and has no internet access of its own. No ads, no account, no in-app purchases: one price, everything included.">
+  <meta name="theme-color" content="#0E1216">
+  <link rel="icon" href="../images/favicon-32.png">
+  <link rel="icon" href="../images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../images/favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Jini Solutions">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Day OK: A calm calendar and clock for your TV, tablet and phone">
+  <meta property="og:description" content="Day OK: A calm calendar and clock for your TV, tablet and phone. Day OK shows your day, week, month and year at a glance. It reads the calendars your device already syncs and has no internet access of its own. No ads, no account, no in-app purchases: one price, everything included.">
+  <meta property="og:url" content="https://jini.solutions/dayok/">
+  <meta property="og:image" content="https://jini.solutions/images/og/dayok.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jini.solutions/dayok/">
   <link rel="alternate" hreflang="en" href="https://jini.solutions/dayok/">
   <link rel="alternate" hreflang="ro" href="https://jini.solutions/dayok/index_ro.html">
@@ -20,12 +34,15 @@
   --bg:     #F8FAFC;
   --white:  #FFFFFF;
   --border: #E5E7EB;
-  --muted:  #6B7280;
+  --muted:  #475569;   /* 7.6:1 on white (was #6B7280, 4.6:1 on --bg) */
   --link:   #047857;   /* text links: 5.5:1 on white (the greens are decoration) */
+  --hero:   var(--dark); /* an app page sets its own hero and link colours */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font);
   background: var(--bg);
   color: var(--dark);
   line-height: 1.6;
@@ -53,7 +70,7 @@ img { max-width: 100%; }
   position: sticky; top: 0; z-index: 20;
 }
 .site-bar {
-  max-width: 1080px; margin: 0 auto; padding: 10px 24px;
+  max-width: 1160px; margin: 0 auto; padding: 10px 24px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 8px 20px; flex-wrap: wrap;
 }
@@ -69,24 +86,29 @@ img { max-width: 100%; }
 }
 a:hover { text-decoration: underline; }
 
-/* ── Header ────────────────────────────────────────────── */
+/* ── Hero: the studio's charcoal, or the app's own colour ── */
 .app-hero, .studio-hero {
-  background: var(--dark);
+  background: var(--hero);
   color: var(--white);
   text-align: center;
   padding: 72px 24px 56px;
 }
 .app-hero h1, .studio-hero h1 {
-  font-size: 48px;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 /* Green dot accent: mirrors the logo dots */
 .app-hero span.dot, .studio-hero span.dot { color: var(--green); }
 .app-hero p, .studio-hero p {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 2vw, 1.3rem);
   margin-top: 12px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
+}
+/* Focus stays visible on the coloured heroes. */
+.app-hero a:focus-visible, .studio-hero a:focus-visible, .hero a:focus-visible {
+  outline-color: var(--white);
 }
 .cta-row { margin-top: 28px; }
 .cta-btn {
@@ -96,17 +118,17 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   font-size: 15px;
   padding: 12px 28px;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: background 0.15s;
 }
 .cta-btn:hover { background: var(--green2); text-decoration: none; }
 .cta-soon {
   display: inline-block;
-  border: 2px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.7);
-  font-size: 14px;
+  border: 2px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
   padding: 11px 24px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -131,35 +153,26 @@ a:hover { text-decoration: underline; }
 }
 
 /* ── Main / Sections ────────────────────────────────────── */
-main { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+main { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+main:has(> section.prose) { max-width: 840px; }
 section {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 28px 32px;
   margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(15,23,42,0.04);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
 }
+/* Website v2: no green bar before every h2; the green is kept for the
+   full stop in the titles. */
 h2 {
-  font-size: 20px;
+  font-size: clamp(1.35rem, 2.2vw, 1.6rem);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--dark);
   margin-bottom: 16px;
 }
-/* Green left rule on h2 */
-h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 10px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-}
-p { margin-bottom: 12px; font-size: 15px; color: #374151; }
+p { margin-bottom: 12px; font-size: 1.0625rem; color: #374151; }
 p:last-child { margin-bottom: 0; }
 
 /* ── Stats grid ─────────────────────────────────────────── */
@@ -180,11 +193,11 @@ p:last-child { margin-bottom: 0; }
   display: block;
   font-size: 36px;
   font-weight: 800;
-  color: var(--green2);
+  color: var(--link);   /* 5.2:1 on --bg; the green read 2.5:1 (2026-10-24) */
   letter-spacing: -1px;
 }
 .stat-card .label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--muted);
   text-transform: uppercase;
@@ -236,9 +249,9 @@ p:last-child { margin-bottom: 0; }
 /* ── Features list ──────────────────────────────────────── */
 .features { list-style: none; }
 .features li {
-  padding: 6px 0 6px 24px;
+  padding: 8px 0 8px 24px;
   position: relative;
-  font-size: 15px;
+  font-size: 1.0625rem;
   color: #374151;
   border-bottom: 1px solid var(--border);
 }
@@ -252,7 +265,7 @@ p:last-child { margin-bottom: 0; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--link);
 }
 
 /* ── Contact: the app's Contact page (2026-09-18) ───────── */
@@ -281,25 +294,43 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--dark); }
 footer .sep { margin: 0 10px; opacity: 0.4; }
+footer .studio-line { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+/* ── How the app is paid for (website v2, 2026-10-24) ──── */
+.app-hero p.price-line {
+  font-size: 15px; font-weight: 700; margin-top: 16px;
+  color: rgba(255,255,255,0.9);
+}
+.app-price { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+/* ── Website v2 pages: app name over a slogan, wide galleries, FAQ ── */
+.app-hero p.app-name {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font-size: 1.25rem; font-weight: 800; color: var(--white);
+}
+.app-hero p.app-name img { border-radius: 10px; }
+.shots.shots--wide {
+  display: grid; gap: 16px; overflow: visible;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+}
+.shot.shot--wide { width: auto; }
+.shot.shot--wide img { border-radius: 10px; }
+.faq details { border-top: 1px solid var(--border); padding: 12px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.0625rem; }
+.faq details p { margin: 8px 0 0; }
+ul.features + p { margin-top: 14px; }
+.contact-block { text-align: center; }
+.contact-block h2 { text-align: left; }
 .nowrap { white-space: nowrap; }
 
 /* ── Privacy prose ──────────────────────────────────────── */
-.prose { font-size: 15px; color: #374151; }
+.prose { font-size: 1.0625rem; color: #374151; }
 .prose h1 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
 .prose .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
 .prose h2 {
-  font-size: 16px; font-weight: 700; color: var(--dark);
-  margin: 24px 0 8px;
-}
-.prose h2::before {
-  content: "";
-  display: inline-block;
-  width: 4px; height: 1em;
-  background: var(--green);
-  border-radius: 2px;
-  margin-right: 8px;
-  vertical-align: middle;
-  position: relative; top: -1px;
+  font-size: 1.2rem; font-weight: 700; color: var(--dark);
+  margin: 28px 0 8px;
 }
 .prose p  { margin-bottom: 10px; }
 .prose ul { margin: 6px 0 12px 20px; }
@@ -309,7 +340,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
 .app-hero p.platforms { font-size: 14px; margin-top: 18px; color: rgba(255,255,255,0.55); }
 
 /* ── Hero: the Play feature graphic under the header ────── */
-.hero { background: var(--dark); padding: 0 24px 40px; text-align: center; }
+.hero { background: var(--hero); padding: 0 24px 40px; text-align: center; }
 .hero img {
   max-width: 900px; width: 100%; height: auto;
   border-radius: 18px;
@@ -334,7 +365,7 @@ footer .sep { margin: 0 10px; opacity: 0.4; }
   box-shadow: 0 8px 20px rgba(15,23,42,0.10);
   background: #000;
 }
-.shot figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
 @media (min-width: 900px) {
   .shots { flex-wrap: wrap; overflow: visible; justify-content: space-between; }
   .shot { width: calc((100% - 5 * 14px) / 6); }
@@ -373,13 +404,14 @@ a.zoom { display: block; cursor: zoom-in; }
 a.zoom:hover { text-decoration: none; }
 a.zoom img { transition: transform 0.15s; }
 a.zoom:hover img { transform: scale(1.02); }
-.lightbox {
-  position: fixed; inset: 0; z-index: 100;
-  background: rgba(15,23,42,0.92);
-  display: flex; align-items: center; justify-content: center;
-  padding: 48px 64px;
+dialog.lightbox {
+  border: none; background: transparent; color: var(--white);
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  margin: 0; padding: 48px 64px;
 }
-.lightbox[hidden] { display: none; }
+dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+dialog.lightbox::backdrop { background: rgba(15,23,42,0.92); }
+dialog.lightbox :focus-visible { outline-color: var(--white); }
 .lightbox img {
   max-width: 100%; max-height: calc(100vh - 120px);
   border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -414,7 +446,7 @@ a.zoom:hover img { transform: scale(1.02); }
 .updated { margin-top: 6px; font-size: 12px; }
 
 /* ── Apps index: one card per website_apps.SITE_APPS entry ─ */
-main.wide { max-width: 1080px; }
+main.wide { max-width: 1160px; }
 .app-grid {
   display: grid; gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -440,7 +472,7 @@ main.wide { max-width: 1080px; }
 .app-tagline { font-weight: 600; color: #374151; font-size: 15px; }
 .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .badges li {
-  font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
   background: #EEF2F7; color: var(--dark); border: 1px solid var(--border);
 }
 .app-links {
@@ -452,8 +484,8 @@ main.wide { max-width: 1080px; }
   font-weight: 600; font-size: 14px;
 }
 .app-soon {
-  display: inline-block; padding: 8px 14px; border-radius: 8px;
-  border: 1px dashed #9CA3AF; color: #4B5563; font-size: 14px; font-weight: 600;
+  display: inline-block; padding: 8px 14px; border-radius: 10px;
+  border: 1px dashed #9CA3AF; color: #374151; font-size: 14px; font-weight: 600;
 }
 .app-card .cta-btn { padding: 8px 18px; }
 
@@ -472,15 +504,18 @@ main.wide { max-width: 1080px; }
   main { padding: 24px 16px 40px; }
   section { padding: 20px 18px; border-radius: 14px; }
   .app-hero, .studio-hero { padding: 40px 16px 32px; }
-  .app-hero h1, .studio-hero h1 { font-size: 34px; }
-  .app-hero p, .studio-hero p { font-size: 17px; }
   .hero { padding: 0 16px 24px; }
   .page-nav a { margin: 2px 8px; }
+}
+/* ── Reduced motion (website v2) ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  a.zoom:hover img { transform: none; }
 }
 
   </style>
 </head>
-<body>
+<body style="--hero:#0E1216;--link:#1D4ED8">
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -491,26 +526,31 @@ main.wide { max-width: 1080px; }
     </a>
     <nav class="site-nav" aria-label="Site">
       <a href="../index.html#apps" aria-current="page">Apps</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../contact/index.html">About &amp; Contact</a>
       <a href="../privacy/index.html">Privacy</a>
     </nav>
   </div>
 </header>
 
-<div class="app-hero" style="--accent:#1D4ED8">
-  <h1>Day OK<span class="dot">.</span></h1>
+<div class="app-hero">
+  <p class="app-name"><img src="../images/apps/dayok.png" alt="" width="40" height="40"><span>Day OK</span></p>
+  <h1>Keep Calm and TV On<span class="dot">.</span></h1>
   <p>A calm calendar and clock for your TV, tablet and phone.</p>
+  <p class="price-line">One-time purchase · No ads · No subscription · No account</p>
   <div class="cta-row">
-    <span class="cta-soon">Coming soon to Google Play</span>
+    <span class="cta-soon">Planned for Google Play in late November 2026</span>
   </div>
   <p class="platforms">For Google TV and Android TV, and for Android tablets and phones.</p>
 </div>
 
 <nav class="page-nav" aria-label="Day OK">
   <a href="#about">About</a>
-  <a href="#features">Features</a>
+  <a href="#setup">Setup</a>
   <a href="#screenshots">Screenshots</a>
-  <a href="privacy/index.html">Privacy</a>
+  <a href="#devices">Where it runs</a>
+  <a href="#features">Features</a>
+  <a href="#privacy">Privacy</a>
+  <a href="#faq">FAQ</a>
   <a href="index_ro.html" hreflang="ro" lang="ro">Română</a>
 </nav>
 
@@ -521,17 +561,130 @@ main.wide { max-width: 1080px; }
     <p>
       A calm calendar and clock for your living-room TV, your tablet or your
       phone. Day OK shows the next three days, the week, the month and the
-      year from the Google Calendar already on your device, in large type you
-      can read from the sofa.
+      year from the calendars already on your device, in large type you can
+      read from the sofa.
     </p>
     <p>
-      It reads your calendar and never changes your events: it cannot add,
-      change or delete them. There is no weather, no news, no photos and no
-      ads. You do not create an account or type a password: your calendars
-      sync through the device, as they already do.
+      It is a smarter, nicer way to see your Google Calendar. It works with
+      the calendars you already have and never changes your events: you keep
+      editing them as you always do, on your phone or computer, and the
+      changes appear here after the next sync. If you'd like to edit them on
+      the TV too, send us a request from
+      <em>Settings &rsaquo; About &rsaquo; Contact and feedback</em>.
+    </p>
+    <p>
+      There is no weather, no news, no photos and no ads. You do not create an
+      account or type a password: your calendars sync through the device, as
+      they already do.
     </p>
     <p>
       Pay once. No subscription, no in-app purchases, nothing to unlock.
+    </p>
+  </section>
+
+  <section id="setup">
+    <h2>Setup in easy steps</h2>
+    <p>
+      Setup takes a moment, and every step has a <strong>?</strong> that
+      explains it in plain words.
+    </p>
+    <ul class="features">
+      <li>Install Day OK from Google Play on your TV, tablet or phone.</li>
+      <li>Allow calendar access: Day OK reads the calendars this device
+        already syncs, and sends nothing anywhere.</li>
+      <li>Choose which calendars to show.</li>
+      <li>Say where the screen is, then pick a theme, a moving background and
+        a font, or keep the suggestions.</li>
+    </ul>
+    <p>
+      No calendars on the TV yet? Add your Google account in the TV's
+      <em>Settings &rsaquo; Accounts &amp; sign-in</em>; your calendars appear
+      within a few minutes. A calendar marked <em>Not synced</em> has a
+      <em>Turn on sync</em> button next to it.
+    </p>
+    <p>
+      The built-in help answers the rest, in plain words, on the TV itself.
+    </p>
+  </section>
+
+  <section id="screenshots">
+    <h2>Screenshots</h2>
+    <p class="lang-label">Made with the Demo calendar: no real events. Tap a picture to enlarge it.</p>
+    <div class="shots shots--wide">
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_01_days_dark_en.jpg" data-caption="Today and the next days, readable from the sofa">
+          <img src="../images/dayok/tv_01_days_dark_en.jpg" alt="The 3-day view on a TV, dark theme, with the demo calendars" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Today and the next days, readable from the sofa</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_02_week_dark_en.jpg" data-caption="The week: what&#x27;s coming, day by day">
+          <img src="../images/dayok/tv_02_week_dark_en.jpg" alt="The week view on a TV, dark theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>The week: what&#x27;s coming, day by day</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_03_month_dark_en.jpg" data-caption="The month at a glance, coloured by calendar">
+          <img src="../images/dayok/tv_03_month_dark_en.jpg" alt="The month view on a TV, dark theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>The month at a glance, coloured by calendar</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_04_year_dark_en.jpg" data-caption="The year: busy days at a glance">
+          <img src="../images/dayok/tv_04_year_dark_en.jpg" alt="The year view on a TV, dark theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>The year: busy days at a glance</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_05_details_light_en.jpg" data-caption="Event details: when, where, how often">
+          <img src="../images/dayok/tv_05_details_light_en.jpg" alt="An event&#x27;s details on a TV, light theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Event details: when, where, how often</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tv_06_month_light_en.jpg" data-caption="Light or dark, calm either way">
+          <img src="../images/dayok/tv_06_month_light_en.jpg" alt="The month view on a TV, light theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>Light or dark, calm either way</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/tablet_01_days_light_en.jpg" data-caption="On a tablet">
+          <img src="../images/dayok/tablet_01_days_light_en.jpg" alt="The 3-day view on a tablet, light theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>On a tablet</figcaption>
+      </figure>
+      <figure class="shot shot--wide">
+        <a class="zoom" href="../images/dayok/phone_01_days_light_en.jpg" data-caption="On a phone, in landscape">
+          <img src="../images/dayok/phone_01_days_light_en.jpg" alt="The 3-day view on a phone in landscape, light theme" loading="lazy"
+               width="1280" height="720">
+        </a>
+        <figcaption>On a phone, in landscape</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="devices">
+    <h2>Where it runs</h2>
+    <ul class="features">
+      <li>Google TV and Android TV, with the remote</li>
+      <li>Android tablets, by touch, in either orientation</li>
+      <li>Android phones, by touch, in landscape</li>
+    </ul>
+    <p>
+      One purchase for all your devices on the same Google Play account. Your
+      family can share it through Google Play Family Library, where it is
+      available.
+    </p>
+    <p>
+      Day OK needs Android 7 or newer with Google Play. It is not available for
+      Samsung (Tizen), LG (webOS) or Fire TV, or for iPhone and iPad.
     </p>
   </section>
 
@@ -553,14 +706,6 @@ main.wide { max-width: 1080px; }
     </ul>
   </section>
 
-  <section id="screenshots">
-    <h2>Screenshots</h2>
-    <div class="shots-placeholder" role="note">
-      <p>Screenshots of the TV, tablet and phone layouts are coming
-        with the Google Play listing.</p>
-    </div>
-  </section>
-
   <section id="privacy">
     <h2>Private by design</h2>
     <ul class="features">
@@ -569,20 +714,64 @@ main.wide { max-width: 1080px; }
       <li>Your events are read on the device and stay there.</li>
       <li>No ads, no tracking, no analytics, no account.</li>
     </ul>
+    <p>
+      To show your calendar at once when it starts, Day OK keeps an
+      encrypted copy of the last events it showed on the device. It is never
+      backed up, and it is deleted when you take back the calendar
+      permission.
+    </p>
     <p class="section-link">
       <a href="privacy/index.html">Read the Day OK Privacy Policy</a>
     </p>
   </section>
 
-  <section id="contact">
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Which calendars does it show?</summary>
+      <p>The calendars this device already syncs: on a TV, usually your Google Calendar; on a phone or tablet, also accounts such as Microsoft Exchange that sync to the device. You choose which ones appear.</p>
+    </details>
+    <details>
+      <summary>Will it work on my TV?</summary>
+      <p>On Google TV and Android TV with Google Play, Android 7 or newer. Because you install it from Google Play, your Google account is already on the TV; if its calendars are missing, the app shows how to turn their sync on. It is not available for Samsung, LG or Fire TV.</p>
+    </details>
+    <details>
+      <summary>Do I pay again for my phone or tablet?</summary>
+      <p>No. One purchase covers all your devices on the same Google Play account. On a phone, Day OK shows in landscape.</p>
+    </details>
+    <details>
+      <summary>Can my family use it without buying it again?</summary>
+      <p>Yes, through Google Play Family Library, where it is available: up to five family members can share it.</p>
+    </details>
+    <details>
+      <summary>Does it change my calendar?</summary>
+      <p>No. It never adds, changes or deletes events. You edit them as usual, on your phone or computer, and the changes appear after the next sync. The only change it can make is the one you ask for: <em>Turn on sync</em>, for a calendar marked <em>Not synced</em>.</p>
+    </details>
+    <details>
+      <summary>Can I edit events on the TV?</summary>
+      <p>Not yet. If you would like to, send us a request from <em>Settings &rsaquo; About &rsaquo; Contact and feedback</em>.</p>
+    </details>
+    <details>
+      <summary>Does it collect my events?</summary>
+      <p>No. It has no internet permission. Your events are read on the device and stay there.</p>
+    </details>
+    <details>
+      <summary>Will it keep my TV on?</summary>
+      <p>Only while Day OK is on the screen, and within your TV's own power and screensaver settings; the built-in help shows what to change. It cannot switch on a TV that is in standby.</p>
+    </details>
+    <details>
+      <summary>How do refunds work?</summary>
+      <p>Purchases and refunds are handled by Google Play, under its own rules.</p>
+    </details>
+  </section>
+
+  <section id="contact" class="contact-block">
     <h2>Contact</h2>
-    <p>
-      Questions, a problem with a particular TV, tablet or phone, or a
-      suggestion: write to <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>. In the app,
-      <em>Settings &rsaquo; About &rsaquo; Contact and feedback</em> prepares
-      the email for you and shows exactly what it contains before your own
-      email app sends it.
-    </p>
+    <img class="contact-logo" src="../images/jini_logo.jpg" alt="Jini Solutions"
+         height="72">
+    <p class="contact-blurb">Questions, a problem or a suggestion? Write to us at <a href="mailto:hello@jini.solutions">hello@jini.solutions</a>.</p>
+    <p class="contact-blurb section-link">
+      <a href="../contact/index.html">About us and how to reach us</a></p>
   </section>
 
 </main>
@@ -597,7 +786,52 @@ main.wide { max-width: 1080px; }
     <span class="sep">|</span>
     <span class="nowrap">&copy; 2026 Jini Solutions</span>
   </p>
+  <p class="studio-line">Independent studio · Bucharest, Romania</p>
 </footer>
+<dialog id="lightbox" class="lightbox" aria-label="Enlarged image">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous image">&#8249;</button>
+  <img alt="Enlarged image">
+  <button type="button" class="lb-next" aria-label="Next image">&#8250;</button>
+  <p class="lb-caption"></p>
+</dialog>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll("a.zoom"));
+  var box = document.getElementById("lightbox");
+  if (!box || !links.length || typeof box.showModal !== "function") return;
+  var img = box.querySelector("img"), cap = box.querySelector(".lb-caption");
+  var prev = box.querySelector(".lb-prev"), next = box.querySelector(".lb-next");
+  var current = -1, opener = null;
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var a = links[current];
+    img.src = a.getAttribute("href");
+    img.alt = a.getAttribute("data-caption") || "";
+    cap.textContent = img.alt;
+    var many = links.length > 1;
+    prev.hidden = !many; next.hidden = !many;
+    if (!box.open) { box.showModal(); box.querySelector(".lb-close").focus(); }
+  }
+  box.addEventListener("close", function () {
+    img.src = ""; current = -1;
+    if (opener) opener.focus();
+  });
+  links.forEach(function (a, i) {
+    a.addEventListener("click", function (e) { e.preventDefault(); opener = a; show(i); });
+  });
+  box.querySelector(".lb-close").addEventListener("click", function () { box.close(); });
+  prev.addEventListener("click", function (e) { e.stopPropagation(); show(current - 1); });
+  next.addEventListener("click", function (e) { e.stopPropagation(); show(current + 1); });
+  box.addEventListener("click", function (e) {
+    if (e.target === box || e.target === img) box.close();
+  });
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") show(current - 1);
+    else if (e.key === "ArrowRight") show(current + 1);
+  });
+})();
+</script>
 
 </body>
 </html>
